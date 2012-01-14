@@ -1,0 +1,137 @@
+
+/*
+ * Colours
+ */
+@black : #000;
+@white: #fff;
+@darkBlue: #046;
+@lightBlue: #3BF;
+
+/*
+ *  Numbers
+ */
+@headerHeight:50px;
+@pageWidth:924px;
+@pageHeight:668px;
+@pageInset:50px;
+
+@generalMargin:20px;
+
+/*
+ * Generic Classes
+ */
+.smallBorderRadius{
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.largeBorderRadius{
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.largeDropShadows{
+  -moz-box-shadow: 0 0 20px @black;
+  -webkit-box-shadow: 0 0 20px @black;
+  box-shadow: 0 0 20px @black; 
+}
+
+.blueBackground{
+  background-image:url('./assets/header-bg.jpg');
+}
+
+.verticalGradient(@topColor: #fff, @bottomColor: #000){
+  /*
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}');
+
+  -ms-filter: "progid: DXImageTransform.Microsoft.gradient(startColorstr = '@topColor', endColorstr = '@bottomColor')";
+*/
+  background-image: -moz-linear-gradient(top, @topColor, @bottomColor);
+  background-image: -ms-linear-gradient(top, @topColor, @bottomColor);
+  background-image: -o-linear-gradient(top, @topColor, @bottomColor);
+  background-image: -webkit-gradient(linear, center top, center bottom, from(@topColor), to(@bottomColor));
+  background-image: -webkit-linear-gradient(top, @topColor, @bottomColor);
+  background-image: linear-gradient(top, @topColor, @bottomColor);
+
+
+}
+
+/*
+ * Core elements
+ */
+
+body{
+  font-family: 'Raleway', cursive;
+  margin:0;
+  line-height:22px;
+  margin:0 auto;
+  background-image:url('./assets/header-bg.png');
+}
+
+ul{
+  padding:0 0 0 15px;
+}
+
+a{
+  color:#ae3d26;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+}
+hr{
+  border:none;border-top:1px dotted #000;
+}
+
+.header{
+  color:@darkBlue;
+  text-shadow: 0 1px 1px  darken(desaturate(@lightBlue, 30%),10%);
+  font-family:"Museo Slab 700", Rockwell, Georgia, serif; font-weight:700; font-style:normal;
+ .verticalGradient(@lightBlue, @darkBlue);
+  box-shadow: rgb(0, 0, 0) 0px 0px 8px;
+  margin-bottom: 20px;
+  padding: 8px;
+  
+  h1{
+    font-family: "Museo Slab", Rockwell, Georgia, serif;
+    font-weight: 400;
+    font-style: normal;
+    display: inline;
+    font-size: 34px;
+    margin-left: 10px;
+    line-height: 30px;
+    letter-spacing: -2px;
+  }
+}
+
+.page{
+  .largeDropShadows;
+  .largeBorderRadius;
+  width: @pageWidth;
+  height:@pageHeight;
+  border-width:2px;
+  border-style:solid;
+  border-color:silver;  
+  margin-left: auto;
+  margin-right: auto;
+  background-color: @black;
+  font-size: 22px;
+}
+
+#content{
+  .smallBorderRadius;
+  .verticalGradient(#111);
+  width:@pageWidth -  @pageInset * 2;
+  height:@pageHeight -  @pageInset * 2;
+  margin:@pageInset;
+  border-color: #222;
+  border-width: 1px;
+  border-style: solid;
+  color:@white;
+}
+
+.footer{
+  margin-top:20px;
+  .blueBackground;
+}

@@ -4,3 +4,9 @@
 [submodule "public/jquery"]
 	path = public/jquery
 	url = git@github.com:Dakuan/steal.git
+[submodule "public/documentjs"]
+	path = public/documentjs
+	url = git@github.com:Dakuan/documentjs.git
+[submodule "public/funcunit"]
+	path = public/funcunit
+	url = git@github.com:Dakuan/documentjs.git
