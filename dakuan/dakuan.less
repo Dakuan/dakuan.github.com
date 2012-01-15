@@ -15,7 +15,9 @@
 @pageHeight:668px;
 @pageInset:50px;
 
-@generalMargin:20px;
+@generalMargin:40px;
+
+@contentWidth:@pageWidth -  @pageInset * 2;
 
 /*
  * Generic Classes
@@ -32,9 +34,9 @@
 }
 
 .largeDropShadows{
-  -moz-box-shadow: 0 0 20px @black;
-  -webkit-box-shadow: 0 0 20px @black;
-  box-shadow: 0 0 20px @black; 
+  -moz-box-shadow: 0 0 8px @black;
+  -webkit-box-shadow: 0 0 8px @black;
+  box-shadow: 0 0 8px @black; 
 }
 
 .blueBackground{
@@ -55,6 +57,21 @@
   background-image: linear-gradient(top, @topColor, @bottomColor);
 
 
+}
+.blueVerticalGradient(){
+  .verticalGradient(@darkBlue, @lightBlue);
+}
+.shadowForDarkBlueText{
+    text-shadow: 0 1px 1px  darken(desaturate(@lightBlue, 30%),10%);
+}
+
+
+.fancyFont{
+  font-family:"Museo Slab 100", Rockwell, Georgia, serif; font-weight:100; font-style:normal;
+}
+
+.clear{
+  clear:both;
 }
 
 /*
@@ -90,7 +107,7 @@ hr{
   font-family:"Museo Slab 700", Rockwell, Georgia, serif; font-weight:700; font-style:normal;
  .verticalGradient(@lightBlue, @darkBlue);
   box-shadow: rgb(0, 0, 0) 0px 0px 8px;
-  margin-bottom: 20px;
+  margin-bottom: @generalMargin;
   padding: 8px;
   
   h1{
@@ -122,7 +139,7 @@ hr{
 #content{
   .smallBorderRadius;
   .verticalGradient(#111);
-  width:@pageWidth -  @pageInset * 2;
+  width:@contentWidth;
   height:@pageHeight -  @pageInset * 2;
   margin:@pageInset;
   border-color: #222;
@@ -132,6 +149,97 @@ hr{
 }
 
 .footer{
-  margin-top:20px;
-  .blueBackground;
+  .largeDropShadows;
+  margin-top:@generalMargin;
+  color: @darkBlue;
+  .blueVerticalGradient;
+  padding: 5px;
+  h4{
+    .fancyFont;
+    margin:0px;
+    float:right;
+    .shadowForDarkBlueText;
+  }
+}
+
+@tileWidth : (@contentWidth - 160) / 3;
+
+.rotatedTile(@angle: 2deg){
+  -webkit-transform: rotate(@angle);
+}
+
+@tileRotation: deg;
+
+.tile(@color){
+  border-color: @color;
+  box-shadow: @color 0px 0px 5px;
+  color:@color;
+}
+
+
+
+#menu{
+  
+  list-style:none;
+  width:@pageWidth -  @pageInset * 2;
+  
+  margin: 16px;
+  
+  .square{
+    width: @tileWidth;
+    height: @tileWidth;
+  }
+  div{
+    float:left;
+    margin:10px;
+    .smallBorderRadius;
+    .rotatedTile(@tileRotation);
+    border-width: 1px;
+    border-style: solid;
+    text-align: right;
+    padding: 10px;
+  
+    
+    h2{
+      .rotatedTile(-@tileRotation);
+      font-weight: normal;
+      font-size: 20px;
+      margin-top:-5px;
+    }
+  }
+  .clear{
+    width:0px;
+    height:0px;
+    display:none;
+  }
+  .deselected{
+    width:10px;
+    height:10px;
+  }
+  .stage1{
+    height: 10px;
+    width: auto;
+  } 
+  .stage2{
+    width:@contentWidth - 70;
+    height:10px;
+  }  
+  .mobile{
+    .tile(red);
+  }
+  .web{
+    .tile(orange);
+  }
+  .dev{
+    .tile(yellow);
+  }
+  .about{
+    .tile(purple);
+  }
+  .job{
+    .tile(blue);
+  }
+  .git{
+    .tile(lime);
+  }
 }
