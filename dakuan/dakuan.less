@@ -55,8 +55,6 @@
   background-image: -webkit-gradient(linear, center top, center bottom, from(@topColor), to(@bottomColor));
   background-image: -webkit-linear-gradient(top, @topColor, @bottomColor);
   background-image: linear-gradient(top, @topColor, @bottomColor);
-
-
 }
 .blueVerticalGradient(){
   .verticalGradient(@darkBlue, @lightBlue);
@@ -189,6 +187,9 @@ hr{
     width: @tileWidth;
     height: @tileWidth;
   }
+  .selected{
+    height:10px;
+  }
   div{
     float:left;
     margin:10px;
@@ -213,8 +214,8 @@ hr{
     display:none;
   }
   .deselected{
-    width:10px;
-    height:10px;
+    width:0px;
+    height:0px;
   }
   .stage1{
     height: 10px;
