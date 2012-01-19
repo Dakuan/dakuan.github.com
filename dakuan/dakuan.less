@@ -102,7 +102,6 @@ hr{
 .header{
   color:@darkBlue;
   text-shadow: 0 1px 1px  darken(desaturate(@lightBlue, 30%),10%);
-  font-family:"Museo Slab 700", Rockwell, Georgia, serif; font-weight:700; font-style:normal;
  .verticalGradient(@lightBlue, @darkBlue);
   box-shadow: rgb(0, 0, 0) 0px 0px 8px;
   margin-bottom: @generalMargin;
@@ -162,26 +161,31 @@ hr{
 
 @tileWidth : (@contentWidth - 160) / 3;
 
-.rotatedTile(@angle: 2deg){
-  -webkit-transform: rotate(@angle);
-}
-
-@tileRotation: deg;
-
 .tile(@color){
-  border-color: @color;
-  box-shadow: @color 0px 0px 5px;
-  color:@color;
+  border-color: darken(@color, 30%); 
+  color: darken(@color, 20%);
+  &.hover{
+    border-color: @color; 
+    color:@color;
+  }
+  &.selected{
+    border-color: @color; 
+    color:@color;
+  }
 }
 
-
-
+#detailContainer{
+  clear:both;
+  display:none;
+}
+@menuMargin: 20px;
+@menuBorderWidth: 1px;
+@menuPadding: 10px;
+@menuTileMargin:10px;
 #menu{
   
-  list-style:none;
   width:@pageWidth -  @pageInset * 2;
-  
-  margin: 16px;
+  margin: @menuMargin;
   
   .square{
     width: @tileWidth;
@@ -192,21 +196,13 @@ hr{
   }
   div{
     float:left;
-    margin:10px;
+    margin: @menuTileMargin;
     .smallBorderRadius;
-    .rotatedTile(@tileRotation);
-    border-width: 1px;
+    border-width: @menuBorderWidth;
     border-style: solid;
     text-align: right;
-    padding: 10px;
-  
-    
-    h2{
-      .rotatedTile(-@tileRotation);
-      font-weight: normal;
-      font-size: 20px;
-      margin-top:-5px;
-    }
+    padding: @menuPadding;
+    line-height: 10px; 
   }
   .clear{
     width:0px;
@@ -216,31 +212,33 @@ hr{
   .deselected{
     width:0px;
     height:0px;
+    font-size:0px;
+    padding:0px;
   }
   .stage1{
     height: 10px;
     width: auto;
   } 
   .stage2{
-    width:@contentWidth - 70;
+    width:@contentWidth - ((@menuMargin * 2) + (@menuBorderWidth * 2) + (@menuPadding * 2) + (@menuTileMargin * 2));
     height:10px;
   }  
   .mobile{
-    .tile(red);
+    .tile(#F00);
   }
   .web{
-    .tile(orange);
+    .tile(#FFA500);
   }
   .dev{
-    .tile(yellow);
+    .tile(#FF0);
   }
   .about{
-    .tile(purple);
+    .tile(#F0F);
   }
   .job{
-    .tile(blue);
+    .tile(#00F);
   }
   .git{
-    .tile(lime);
+    .tile(#0F0);
   }
 }

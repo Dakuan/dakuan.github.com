@@ -10,6 +10,17 @@ $.Controller('Dakuan.Controllers.Home',
 		this.element.html(this.view());
 		
 		$('#menu').dakuan_menu();
+		
+		$('#detailContainer').dakuan_detail();
+	},
+	
+	'#menu requestDetail': function(el, ev, args){
+		
+		switch(args){
+			case 'mobile':
+			$('#detailContainer').controller().showMobile();
+			break;
+		}
 	}
 })
 })

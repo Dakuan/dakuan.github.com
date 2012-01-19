@@ -16,24 +16,44 @@ $.Controller('Dakuan.Controllers.Menu',
 	init : function(){
 		this.element.html(this.view());
 	},
+	
+	'.square, .square > h2 mouseover' : function(el, ev){
+				
+		this.addRemoveHover(el, false);
+	},
+	
+	'.square, .square > h2 mouseout' : function(el, ev){
+			
+		this.addRemoveHover(el, true);
+	},
+	
+	addRemoveHover: function(el, remove){
+		
+		var element = $(el);
+		
+		if(remove){
+			element.is('h2') ? element.parent().removeClass('hover', this.options.time) : element.removeClass('hover', this.options.time);
+		}
+		else{
+			element.is('h2') ? element.parent().addClass('hover', this.options.time) : element.addClass('hover', this.options.time);
+		}
+	},
 		
 	fadeOutDeselected: function(index, element){
 		
 		var self = this;
-		
-		$(element).fadeOut(self.time, self.options.easing, function(){
-			
-			$(element).parent().addClass('deselected', self.options.time, self.options.easing, function(){
 				
-				$(element).parent().fadeOut(self.options.time, self.options.easing, function(){
+		$(element).addClass('deselected', self.options.time, self.options.easing, function(){
+			
+			$(element).fadeOut(self.options.time, self.options.easing, function(){
+				
+				if($('#menu div:visible').length === 1){
 					
-					if($('#menu div:visible').length === 1){
-						
-						$('.selected').addClass('stage2', self.options.time, self.options.easing, function(){
-							self.options.collapsed = true;
-						});	
-					}
-				});
+					$('.selected').addClass('stage2', self.options.time, self.options.easing, function(){
+						self.options.collapsed = true;
+						self.element.trigger('requestDetail', 'mobile');
+					});	
+				}
 			});
 		});
 	},
@@ -44,9 +64,9 @@ $.Controller('Dakuan.Controllers.Menu',
 		
 		var menuElements = $('#menu div');
 		
-		if(!this.small){
+		if(!this.options.collapsed){
 								
-			menuElements.not('.selected').children('h2').each(this.callback('fadeOutDeselected'));
+			menuElements.not('.selected').each(this.callback('fadeOutDeselected'));
 		}
 		else{
 			menuElements.not('.selected').children().fadeIn();
@@ -58,6 +78,13 @@ $.Controller('Dakuan.Controllers.Menu',
 	
 	'#menu div click': function(el, ev){
 		
+		if($('#menu div').index(el) > 0){
+			
+			var before = $('#menu div')[0];
+		
+			el.insertBefore(before);
+		}
+
 		el.addClass('selected', this.options.time, this.options.easing, this.callback('switchTo'));
 	}
 })
