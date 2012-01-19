@@ -159,7 +159,10 @@ hr{
   }
 }
 
-@tileWidth : (@contentWidth - 160) / 3;
+//@tileWidth : (@contentWidth - 160) / 3;
+
+@tileWidth : (@menuWidth - (@menuMargin * 3))  / 3;
+
 
 .tile(@color){
   border-color: darken(@color, 30%); 
@@ -181,10 +184,11 @@ hr{
 @menuMargin: 20px;
 @menuBorderWidth: 1px;
 @menuPadding: 10px;
-@menuTileMargin:10px;
+@menuTileMargin: 10px;
+@menuWidth:@pageWidth -  @pageInset * 2;
 #menu{
   
-  width:@pageWidth -  @pageInset * 2;
+  width: @menuWidth;
   margin: @menuMargin;
   
   .square{
