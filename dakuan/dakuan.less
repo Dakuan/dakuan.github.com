@@ -1,3 +1,18 @@
+/*
+ * Fonts
+ */
+.sansSerifBold{
+  font-family:"Din Display Pro Medium", Verdana, sans-serif; 
+  font-size-adjust:0.5; 
+  font-weight:500; 
+  font-style:normal;
+ }
+
+.fancyFont{
+  font-family:"Museo Slab 100", Rockwell, Georgia, serif; 
+  font-weight:100; 
+  font-style:normal;
+}
 
 /*
  * Colours
@@ -64,9 +79,6 @@
 }
 
 
-.fancyFont{
-  font-family:"Museo Slab 100", Rockwell, Georgia, serif; font-weight:100; font-style:normal;
-}
 
 .clear{
   clear:both;
@@ -152,7 +164,7 @@ hr{
   .blueVerticalGradient;
   padding: 5px;
   h4{
-    .fancyFont;
+    .sansSerifBold;
     margin:0px;
     float:right;
     .shadowForDarkBlueText;
@@ -161,31 +173,41 @@ hr{
 
 //@tileWidth : (@contentWidth - 160) / 3;
 
-@tileWidth : (@menuWidth - (@menuMargin * 3))  / 3;
+@tileWidth : (@menuWidth - (@menuMargin * 3) - 100)  / 3;
 
 
 .tile(@color){
-  border-color: darken(@color, 30%); 
-  color: darken(@color, 20%);
+  border-color: darken(@color, 30%);
+  background-color: darken(@color, 10%);
   &.hover{
-    border-color: @color; 
-    color:@color;
+    border-color: @color;
+    background-color: @color; 
   }
   &.selected{
-    border-color: @color; 
-    color:@color;
+    border-color: @color;
+    background-color: lighten(@color, 20%);  
   }
+}
+.solidBorder(@width: 1px){
+  border-style:solid;
+  border-width:@width;
 }
 
 #detailContainer{
   clear:both;
   display:none;
+  width:@contentWidth - ((@menuMargin * 2) + (@menuBorderWidth * 2) + (@menuPadding * 2) + (@menuTileMargin * 2));
+  .solidBorder;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 3px;
 }
 @menuMargin: 20px;
 @menuBorderWidth: 1px;
 @menuPadding: 10px;
 @menuTileMargin: 10px;
 @menuWidth:@pageWidth -  @pageInset * 2;
+
 #menu{
   
   width: @menuWidth;
@@ -206,7 +228,10 @@ hr{
     border-style: solid;
     text-align: right;
     padding: @menuPadding;
-    line-height: 10px; 
+    .sansSerifBold;
+    text-shadow: 0px 1px 0px #333;
+    letter-spacing: -2px;
+    line-height:10px;
   }
   .clear{
     width:0px;
@@ -227,6 +252,25 @@ hr{
     width:@contentWidth - ((@menuMargin * 2) + (@menuBorderWidth * 2) + (@menuPadding * 2) + (@menuTileMargin * 2));
     height:10px;
   }  
+   .mobile{
+    .tile(#D9305D);
+  }
+  .web{
+    .tile(#394273);
+  }
+  .dev{
+    .tile(#F28A2E);
+  }
+  .about{
+    .tile(#007C24);
+  }
+  .job{
+    .tile(#D92525);
+  }
+  .git{
+    .tile(#0088A5);
+  }
+  /*
   .mobile{
     .tile(#F00);
   }
@@ -244,5 +288,5 @@ hr{
   }
   .git{
     .tile(#0F0);
-  }
+  }*/
 }

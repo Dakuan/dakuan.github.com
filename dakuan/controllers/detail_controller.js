@@ -10,7 +10,27 @@ $.Controller('Dakuan.Controllers.Detail',
 	
 	showMobile : function(){
 		this.element.html(this.view('home/mobile'));
-		this.element.fadeIn();
+		this.element.show('bounce');
+	},
+	
+	hide: function(){
+		this.element.slideUp(2000, function(){
+			$(document).trigger('detailHidden');
+		});
+	},
+	
+	'{document} hideDetail' : function(el, ev){
+		this.hide();
+
+	},
+	
+	'{document} requestDetail': function(el, ev, args){
+		
+		switch(args){
+			case 'mobile':
+			this.showMobile();
+			break;
+		}
 	}
 })
 })

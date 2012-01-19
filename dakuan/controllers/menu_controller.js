@@ -14,15 +14,16 @@ $.Controller('Dakuan.Controllers.Menu',
 /** @Prototype */
 {
 	init : function(){
+		
 		this.element.html(this.view());
 	},
 	
-	'.square, .square > h2 mouseover' : function(el, ev){
+	'.square mouseover' : function(el, ev){
 				
 		this.addRemoveHover(el, false);
 	},
 	
-	'.square, .square > h2 mouseout' : function(el, ev){
+	'.square mouseout' : function(el, ev){
 			
 		this.addRemoveHover(el, true);
 	},
@@ -32,9 +33,11 @@ $.Controller('Dakuan.Controllers.Menu',
 		var element = $(el);
 		
 		if(remove){
+			
 			element.is('h2') ? element.parent().removeClass('hover', this.options.time) : element.removeClass('hover', this.options.time);
 		}
 		else{
+			
 			element.is('h2') ? element.parent().addClass('hover', this.options.time) : element.addClass('hover', this.options.time);
 		}
 	},
@@ -50,8 +53,10 @@ $.Controller('Dakuan.Controllers.Menu',
 				if($('#menu div:visible').length === 1){
 					
 					$('.selected').addClass('stage2', self.options.time, self.options.easing, function(){
+						
 						self.options.collapsed = true;
-						self.element.trigger('requestDetail', 'mobile');
+						
+						$(document).trigger('requestDetail', 'mobile');
 					});	
 				}
 			});
@@ -59,26 +64,35 @@ $.Controller('Dakuan.Controllers.Menu',
 	},
 	
 	switchTo: function(){
+				
+		if(!this.options.collapsed){
+								
+			$('#menu div').not('.selected').each(this.callback('fadeOutDeselected'));
+		}
+		else{
+			$(document).trigger('hideDetail');
+		}			
+	},
+	
+	'{document} detailHidden' : function(el, ev){
 		
 		var self = this;
 		
 		var menuElements = $('#menu div');
 		
-		if(!this.options.collapsed){
-								
-			menuElements.not('.selected').each(this.callback('fadeOutDeselected'));
-		}
-		else{
-			menuElements.not('.selected').children().fadeIn();
-			menuElements.removeClass('selected').removeClass('deselected').removeClass('stage2');
-			menuElements.fadeIn();
+		menuElements.not('.selected').children().fadeIn();
+		
+		menuElements.removeClass('selected').removeClass('deselected').removeClass('stage2');
+		
+		menuElements.fadeIn(function(){
+			
 			self.options.collapsed=false;
-		}			
+		});
 	},
 	
 	'#menu div click': function(el, ev){
 		
-		if($('#menu div').index(el) > 0){
+		if($('#menu div').index(el) > 0 && this.options.collapse === false){
 			
 			var before = $('#menu div')[0];
 		

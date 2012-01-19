@@ -12,15 +12,6 @@ $.Controller('Dakuan.Controllers.Home',
 		$('#menu').dakuan_menu();
 		
 		$('#detailContainer').dakuan_detail();
-	},
-	
-	'#menu requestDetail': function(el, ev, args){
-		
-		switch(args){
-			case 'mobile':
-			$('#detailContainer').controller().showMobile();
-			break;
-		}
 	}
 })
 })
