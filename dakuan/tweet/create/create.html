@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>Dakuan.Tweet.Create</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+        </style>
+	</head>
+	<body>
+	    <h1>Dakuan.Tweet.Create Demo</h1>
+		<form id='create' action=''></form>
+		<div id='tweets'></div>
+		<script type='text/javascript' 
+                src='../../../steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('dakuan/tweet/create','dakuan/fixtures',function(){
+				
+				$('#create').dakuan_tweet_create();
+				Dakuan.Models.Tweet.bind('created', function(ev, tweet){
+					$('<div>').html("<h3>"+tweet.name+"</h3><p>"+tweet.description+"</p>")
+					        .appendTo( $('#tweets') )
+				})
+				
+			})
+		</script>
+	</body>
+</html>

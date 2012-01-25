@@ -13,9 +13,47 @@ $.Controller('Dakuan.Controllers.Menu',
 },
 /** @Prototype */
 {
-	init : function(){
+	init : function(el, selectedTile){
+			
+		this.options.view = this.view();
 		
-		this.element.html(this.view());
+		this.show(selectedTile);
+	},
+	
+	clear : function(){
+		
+		this.options.selectedTile = "";
+		
+		this.element.children().remove();
+		
+		this.element.hide();
+	},
+	
+	show : function(selectedTile){
+		
+		this.clear();
+		
+		this.element.html(this.options.view);
+		
+		if(selectedTile != ""){
+			
+			$('.' + selectedTile).click();
+			
+			this.element.show();
+			
+			this.onShown();
+		}
+		else{
+			this.element.show('scale', 1000, this.callback('onShown'));
+		}
+	},
+	
+	onShown:function(){
+		
+		this.options.collapsed = false;
+		
+			
+		$(document).trigger('menuShown');
 	},
 	
 	'.square mouseover' : function(el, ev){
@@ -56,7 +94,7 @@ $.Controller('Dakuan.Controllers.Menu',
 						
 						self.options.collapsed = true;
 						
-						$(document).trigger('requestDetail', 'mobile');
+						$(document).trigger('requestDetail', self.options.selectedTile);
 					});	
 				}
 			});
@@ -75,24 +113,19 @@ $.Controller('Dakuan.Controllers.Menu',
 	},
 	
 	'{document} detailHidden' : function(el, ev){
-		
-		var self = this;
-		
+				
 		var menuElements = $('#menu div');
 		
-		menuElements.not('.selected').children().fadeIn();
-		
 		menuElements.removeClass('selected').removeClass('deselected').removeClass('stage2');
-		
-		menuElements.fadeIn(function(){
-			
-			self.options.collapsed=false;
-		});
+				
+		this.show();
 	},
 	
 	'#menu div click': function(el, ev){
 		
-		if($('#menu div').index(el) > 0 && this.options.collapse === false){
+		this.options.selectedTile = el.attr('class').split(' ')[1];
+		
+		if($('#menu div').index(el) > 0 && this.options.collapsed === false){
 			
 			var before = $('#menu div')[0];
 		
