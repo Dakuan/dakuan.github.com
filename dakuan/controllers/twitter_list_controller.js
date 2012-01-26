@@ -60,6 +60,8 @@ $.Controller('Dakuan.Controllers.TwitterList',{
 		
 		if(!this.options.loading){
 			
+			steal.dev.log('new tweet');
+			
 			var queLength = this.options.quedTweets.attr('queLength');
 			
 			this.options.quedTweets.attr('queLength', ++queLength);

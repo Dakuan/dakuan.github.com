@@ -1,4 +1,8 @@
-<div class="tweet" <%= this %>>
-	<img src="<%= this.user.profile_image_url_https %>" /> 
-	<%== this.formatedText() %>
+<div class="tweet about" <%= this %>>
+	<div class="tweetImage">
+		<img src="<%= this.user.profile_image_url_https %>" /> 
+	</div>
+	<div class="tweetText">
+		<%== this.formatedText() %>
+	</div>
 </div>

@@ -17,9 +17,16 @@ $.Controller('Dakuan.Controllers.Twitter',{
 		
 		var twitterState = new $.Observe({queLength : 0});
 							
-		$("#twitterListContainer").dakuan_twitter_list({ tweets: new Dakuan.Models.Tweet.List(), quedTweets: twitterState });
-				
+		this.list = $("#twitterListContainer").dakuan_twitter_list({ tweets: new Dakuan.Models.Tweet.List(), quedTweets: twitterState });
+			
+		//this.list = new Dakuan.Controllers.TwitterList('#twitterListContainer', { tweets: new Dakuan.Models.Tweet.List(), quedTweets: twitterState });
+			
 		$('#twitterNotificationContainer').dakuan_twitter_notification({quedTweets: twitterState});
+	},
+	
+	'#twitterNotificationContainer requestRefresh' : function(){
+		
+		steal.dev.log('mau!');
 	}
 })
 })
