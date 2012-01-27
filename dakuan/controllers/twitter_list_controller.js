@@ -6,6 +6,7 @@ steal( 'jquery/controller',
 $.Controller('Dakuan.Controllers.TwitterList',{
 	
 	defaults: {
+		
 		loading: true
 	}
 },
@@ -28,6 +29,13 @@ $.Controller('Dakuan.Controllers.TwitterList',{
 		this.options.loading = false;
 			
 		this.checkStatus();
+	},
+	
+	displayCurrentTweets: function(){
+		
+		var deferredTweets = Dakuan.Models.Tweet.findAll();
+		
+		this.element.html(this.view('twitter/tweets.ejs', deferredTweets));
 	},
 	
 	getTweetsFailed: function(){

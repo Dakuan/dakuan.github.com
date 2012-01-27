@@ -16,17 +16,26 @@ $.Controller('Dakuan.Controllers.Twitter',{
 		this.element.html(this.view());
 		
 		var twitterState = new $.Observe({queLength : 0});
+		
+		this.observer = new Dakuan.Looper(2000, this.callback('ping'));
+		
+		this.observer.start();
 							
-		this.list = $("#twitterListContainer").dakuan_twitter_list({ tweets: new Dakuan.Models.Tweet.List(), quedTweets: twitterState });
-			
-		//this.list = new Dakuan.Controllers.TwitterList('#twitterListContainer', { tweets: new Dakuan.Models.Tweet.List(), quedTweets: twitterState });
-			
-		$('#twitterNotificationContainer').dakuan_twitter_notification({quedTweets: twitterState});
+		this.list = $("#twitterListContainer").dakuan_twitter_list({ tweets: new Dakuan.Models.Tweet.List(), quedTweets: twitterState }).controller();
+				
+		this.notification = $('#twitterNotificationContainer').dakuan_twitter_notification({quedTweets: twitterState}).controller();
+	},
+	
+	ping: function(){
+		
+		steal.dev.log('ping');
 	},
 	
 	'#twitterNotificationContainer requestRefresh' : function(){
 		
-		steal.dev.log('mau!');
+		this.observer.stop();
+		
+		this.list.displayCurrentTweets();
 	}
 })
 })
