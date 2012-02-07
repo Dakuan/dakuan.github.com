@@ -11,7 +11,7 @@ $.Controller('Dakuan.Controllers.Twitter',{
 	init : function(){
 		
 		this.element.html(this.view());
-		
+			
 		var state = new $.Observe({queLength : 0, tweets: new Dakuan.Models.Tweet.List()});
 		
 		this.twitterState = state
@@ -26,13 +26,15 @@ $.Controller('Dakuan.Controllers.Twitter',{
 	},
 	
 	onRecievedTweets : function(tweets){
-	
+		
 		this.observer = new Dakuan.TwitterObserver(this.twitterState, tweets);
 			
 		this.list = $("#twitterListContainer").dakuan_twitter_list({ twitterState: this.twitterState, displayedTweets: tweets }).controller();	
 	},
 	
 	'{document} twitterListInit' : function(){
+				
+		$('#twitterContainer .scrollContainer').tinyscrollbar()
 				
 		this.observer.observe();
 	},

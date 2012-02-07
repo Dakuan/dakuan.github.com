@@ -18,6 +18,8 @@ $.Controller('Dakuan.Controllers.TwitterList',{
 				
 		this.chain(tweets, 0, tweets.length, function(){
 			
+			$('#twitterContainer .scrollContainer').tinyscrollbar_update()
+			
 			$(document).trigger('twitterListInit');
 		});
 	},

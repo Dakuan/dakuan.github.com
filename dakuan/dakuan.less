@@ -125,7 +125,9 @@ body{
 ul{
   padding:0 0 0 15px;
 }
-
+p{
+  margin-before:0px;
+}
 a{
   text-decoration:none;
 }
@@ -244,12 +246,10 @@ hr{
   border-radius: 3px;
   font-size:16px;
   background:none;
-  
-
 }
 
 .col{
-    //overflow-y:scroll;
+    overflow-y:hidden;
     height:@pageHeight - (2 * @pageInset) - @menuSelectedHeight - (4 * @menuMargin);
 }
 
@@ -272,8 +272,52 @@ hr{
 iframe{
   .noBorder;
 }
-
-
+#twitterHeader{
+  height:50px;
+}
+.scrollContainer {
+  height:100%;
+  .viewport { 
+    height: 100%; 
+    overflow: hidden;
+    position: relative;
+    margin-right:40px; 
+  }
+  .overview { 
+    list-style: none; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 100%;
+  }
+  .scrollbar { 
+    position: relative; 
+    float: right; 
+    width: 15px; 
+  }
+  .track { 
+    background-color: #D8EEFD; 
+    height: 100%; 
+    width:13px; 
+    position: relative; 
+    padding: 0 1px;
+    .smallBorderRadius;  
+  }
+  .thumb { 
+    margin-top:1px;
+    margin-bottom:1px;
+    height: 20px; 
+    width: 13px; 
+    cursor: pointer; 
+    overflow: hidden; 
+    position: absolute; 
+    top: 0;
+    .smallBorderRadius; 
+    }
+  .disable{ 
+    display: none; 
+  }
+}
 
 @menuMargin: 20px;
 @menuBorderWidth: 1px;
@@ -287,6 +331,12 @@ iframe{
   &.detailContent{
     a{
       color:@color;
+    }
+    .thumb{
+      .verticalGradient(darken(@color, 10%), @color);
+    }
+    .track{
+      .verticalGradient(lighten(@color, 15%), lighten(@color, 5%));
     }
   }
 }

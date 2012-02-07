@@ -10,9 +10,10 @@ $.Controller('Dakuan.Controllers.Detail',
 		
 		var self = this;
 		
-		$.route.delegate('detail', 'set', this.callback('onRouteDetailChange'));
+		$.route.delegate('detail', 'set', this.callback('onRouteDetailSet'));
 	},
-	onRouteDetailChange: function(ev, newVal){
+	
+	onRouteDetailSet: function(ev, newVal){
 			
 		if(newVal){
 			this.show(newVal, true);
@@ -37,16 +38,14 @@ $.Controller('Dakuan.Controllers.Detail',
 				
 				//this.element.html(this.view('home/' + section));
 		}
-		
-	
-		
+				
 		if(animate == true){
 			
 			this.element.show('bounce', function(){
 				
 				$.route.attr('animate', false);
 				
-					$('.scrollContainer').tinyscrollbar();
+				this.element.filter('.scrollContainer').tinyscrollbar();
 			});
 		}
 		else{
@@ -55,7 +54,7 @@ $.Controller('Dakuan.Controllers.Detail',
 			
 			$.route.attr('animate', false);
 			
-				$('.scrollContainer').tinyscrollbar();
+			this.element.filter('.scrollContainer').tinyscrollbar();
 		}
 	},
 	
