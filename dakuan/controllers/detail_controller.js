@@ -7,9 +7,19 @@ steal( 'jquery/controller',
 $.Controller('Dakuan.Controllers.Detail',
 {
 	init : function(){
+		
+		var self = this;
+		
+		$.route.delegate('detail', 'set', this.callback('onRouteDetailChange'));
+	},
+	onRouteDetailChange: function(ev, newVal){
+			
+		if(newVal){
+			this.show(newVal, true);
+		}
 	},
 	
-	show : function(section){
+	show : function(section, animate){
 		
 		this.element.children().remove();
 		
@@ -28,7 +38,25 @@ $.Controller('Dakuan.Controllers.Detail',
 				//this.element.html(this.view('home/' + section));
 		}
 		
-		this.element.show('bounce');
+	
+		
+		if(animate == true){
+			
+			this.element.show('bounce', function(){
+				
+				$.route.attr('animate', false);
+				
+					$('.scrollContainer').tinyscrollbar();
+			});
+		}
+		else{
+			
+			this.element.show();
+			
+			$.route.attr('animate', false);
+			
+				$('.scrollContainer').tinyscrollbar();
+		}
 	},
 	
 	hide: function(){
@@ -46,7 +74,7 @@ $.Controller('Dakuan.Controllers.Detail',
 	
 	'{document} requestDetail': function(el, ev, args){
 		
-		this.show(args);
+		this.show(args,$.route.attr('animate'));
 	}
 })
 })

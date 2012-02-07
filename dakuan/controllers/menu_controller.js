@@ -99,7 +99,13 @@ $.Controller('Dakuan.Controllers.Menu',
 						
 						self.options.collapsed = true;
 						
-						$(document).trigger('requestDetail', self.options.selectedTile);
+						if($.route.attr('detail') != self.options.selectedTile){
+							
+							$.route.attr('detail', self.options.selectedTile);
+						}
+						else{
+							$(document).trigger('requestDetail', self.options.selectedTile)
+						}
 					});	
 				}
 			});

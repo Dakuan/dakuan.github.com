@@ -10,9 +10,12 @@ steal(
 	'steal/less',
 	'./models/models.js',
 	'./controllers/controllers.js',
-	'./classes/classes.js'
+	'./classes/classes.js',
+	'../jquery/dom/route/route.js'
 )
-.then('./dakuan.less','./lib/qtip/qtip.js' , function(){
+.then('./dakuan.less',
+'./lib/qtip/qtip.js' ,
+'./lib/tinyscrollbar/tinyscrollbar.js', function(){
 		
 	$(document).ready(function(){
 		

@@ -9,13 +9,9 @@ $.Controller('Dakuan.Controllers.Home',
 		
 		this.element.html(this.view());
 		
-		$('#menu').dakuan_menu(this.getBrowserHash());
+		$('#menu').dakuan_menu($.route.attr('detail'));
 		
 		$('#detailContainer').dakuan_detail();
-	},
-	
-	getBrowserHash: function(){
-		return hash = window.location.hash.substr(2);
 	}
 })
 })
