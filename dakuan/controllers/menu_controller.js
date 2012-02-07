@@ -91,6 +91,11 @@ $.Controller('Dakuan.Controllers.Menu',
 				if($('#menu div:visible').length === 1){
 					
 					$('.selected').addClass('stage2', self.options.time, self.options.easing, function(){
+				
+						$('.stage2').qtip(Dakuan.QtipFactory.buildHelperTip('Click this to return to the menu.', {
+						   		my: 'bottom left',
+						   		at: 'top center'
+						   	}));
 						
 						self.options.collapsed = true;
 						
@@ -113,6 +118,9 @@ $.Controller('Dakuan.Controllers.Menu',
 	},
 	
 	'{document} detailHidden' : function(el, ev){
+		
+		// qtip could leak, best not give it the chance
+		$('.stage2').qtip('destroy');
 				
 		var menuElements = $('#menu div');
 		

@@ -1,4 +1,5 @@
 steal(
 	'./looper.js',
-	'./twitter_observer'
+	'./twitter_observer',
+	'./qtip_factory.js'
 )

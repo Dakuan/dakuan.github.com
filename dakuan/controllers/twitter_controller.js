@@ -6,36 +6,42 @@ steal( 'jquery/controller',
 	.then('jquery/ui',function($){
 $.Controller('Dakuan.Controllers.Twitter',{
 	
-	defaults: {
-
-	}
 },
 {
 	init : function(){
 		
 		this.element.html(this.view());
 		
-		var twitterState = new $.Observe({queLength : 0});
+		var state = new $.Observe({queLength : 0, tweets: new Dakuan.Models.Tweet.List()});
 		
-		this.observer = new Dakuan.Looper(2000, this.callback('ping'));
+		this.twitterState = state
 		
-		this.observer.start();
-							
-		this.list = $("#twitterListContainer").dakuan_twitter_list({ tweets: new Dakuan.Models.Tweet.List(), quedTweets: twitterState }).controller();
+		var deferredTweets = Dakuan.Models.Tweet.findAll();
+		
+		deferredTweets.done(this.callback('onRecievedTweets'));
+		
+		$('#twitterHeader a').qtip(Dakuan.QtipFactory.buildHelperTip());
 				
-		this.notification = $('#twitterNotificationContainer').dakuan_twitter_notification({quedTweets: twitterState}).controller();
+		this.notification = $('#twitterNotificationContainer').dakuan_twitter_notification({quedTweets: this.twitterState}).controller();
 	},
 	
-	ping: function(){
-		
-		steal.dev.log('ping');
+	onRecievedTweets : function(tweets){
+	
+		this.observer = new Dakuan.TwitterObserver(this.twitterState, tweets);
+			
+		this.list = $("#twitterListContainer").dakuan_twitter_list({ twitterState: this.twitterState, displayedTweets: tweets }).controller();	
 	},
 	
-	'#twitterNotificationContainer requestRefresh' : function(){
+	'{document} twitterListInit' : function(){
+				
+		this.observer.observe();
+	},
+	
+	'#twitterNotificationContainer refreshTweets' : function(){
 		
-		this.observer.stop();
+		this.list.prependTweets(this.observer.quedTweets);
 		
-		this.list.displayCurrentTweets();
+		this.observer.quedTweets = [];
 	}
 })
 })

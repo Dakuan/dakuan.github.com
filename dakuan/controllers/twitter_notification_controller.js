@@ -6,29 +6,57 @@ steal( 'jquery/controller',
 	.then('jquery/ui',function($){
 $.Controller('Dakuan.Controllers.TwitterNotification',{
 	
-	defaults: {
-
-	}
 },
 {
 	init : function(){
+		
+		$('#twitterNotification').qtip({
+		   content: {
+		      text:'click to refresh tweets...'
+		   }
+		})
 		
 		this.element.html(this.view('twitter/notification'));
 		
 		this.options.quedTweets.bind('change', this.callback('onQuedTweetSet'));
 	},
 	
-	onQuedTweetSet: function( ev, attr, how, newVal, oldVal ){
+	onQuedTweetSet: function(ev, attr, how, newVal, oldVal){
 		
 		if(attr = 'quedTweets'){
 			
-			this.element.html('there are ' + newVal + ' new tweets');
+			if(newVal > 0){
+				
+				if(newVal === 1){
+					
+					this.element.html(this.view('twitter/notification', 'there is a new tweet'));
+				}
+				else{
+					
+					this.element.html(this.view('twitter/notification', 'there are ' + newVal + ' new tweets'));
+				}
+					
+				this.element.fadeIn();
+			}
+			else{
+				
+				this.element.fadeOut();
+			}
 		}
 	},
 	
 	'#twitterNotification click' : function(){
 		
-		this.element.trigger('requestRefresh');
+		this.options.quedTweets.attr('queLength', 0);
+		
+		this.element.trigger('refreshTweets');
+	},
+	
+	destroy: function(){
+		
+		this.options.quedTweets.unbind();
+		
+		this._super();
 	}	
 })
 })

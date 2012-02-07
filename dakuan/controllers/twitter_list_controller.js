@@ -5,76 +5,53 @@ steal( 'jquery/controller',
 	.then('jquery/ui',function($){
 $.Controller('Dakuan.Controllers.TwitterList',{
 	
-	defaults: {
-		
-		loading: true
-	}
 },
 {
 	init : function(){
+		
+		//this.element.html(this.view('twitter/tweets.ejs', this.options.displayedTweets));
+			
+		this.prependTweets(this.options.displayedTweets);
+	},
+		
+	prependTweets : function(tweets){
 				
-		var deferredTweets = Dakuan.Models.Tweet.findAll();
-		
-		deferredTweets.done(this.callback('onFirstLoad'));
-		
-		deferredTweets.fail(this.callback('getTweetsFailed'));
-	},
-	
-	onFirstLoad : function(tweets){
-		
-		this.element.html(this.view('twitter/tweets.ejs', tweets));
-		
-		$.each(tweets, this.callback('addNewTweet'));
-		
-		this.options.loading = false;
+		this.chain(tweets, 0, tweets.length, function(){
 			
-		this.checkStatus();
-	},
-	
-	displayCurrentTweets: function(){
-		
-		var deferredTweets = Dakuan.Models.Tweet.findAll();
-		
-		this.element.html(this.view('twitter/tweets.ejs', deferredTweets));
-	},
-	
-	getTweetsFailed: function(){
-		
-		alert('meh! getting tweets failed');
-	},
-	
-	checkStatus : function(){
-		
-		steal.dev.log('checking status....loading status:' + this.options.loading);
-		
-		var deferredTweets = Dakuan.Models.Tweet.findAll();
-		
-		var self = this;
-		
-		deferredTweets.done(function(data){
-			
-			$.each(data, self.callback('addNewTweet'));
+			$(document).trigger('twitterListInit');
 		});
-				
-		setTimeout(this.callback('checkStatus'), 20000);
 	},
 	
-	addNewTweet: function(index, tweet){
-	
-		this.options.tweets.addIfNew(tweet);
-	},
-	
-	'{tweets} add' : function(tweets, event, items){
+	chain: function(tweets, start, count, onComplete){
 		
-		if(!this.options.loading){
+		if(start < count){
 			
-			steal.dev.log('new tweet');
+			var tweet = tweets[start];
 			
-			var queLength = this.options.quedTweets.attr('queLength');
+			var view = this.view('twitter/tweet.ejs', tweets[start])
 			
-			this.options.quedTweets.attr('queLength', ++queLength);
+			if(start === 0){
+				
+				this.element.prepend(view);
+			}
+			else{
+				
+				$(tweets[start -1].elements()[0]).after(view);
+			}
 			
-			steal.dev.log('qued tweets: ' + queLength);
+			var self = this;
+			
+			$(tweet.elements()[0]).slideDown(function(){
+				
+				self.chain(tweets, ++start, count, onComplete);
+			});
+		}
+		else{
+			
+			if(onComplete){
+			
+				onComplete();
+			}
 		}
 	}
 })

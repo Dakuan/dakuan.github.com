@@ -52,6 +52,18 @@
   box-shadow: 0 0 8px @black; 
 }
 
+.smallDropShadows{
+  -moz-box-shadow: 0 0 2px @black;
+  -webkit-box-shadow: 0 0 2px @black;
+  box-shadow: 0 0 2px @black; 
+}
+
+.microDropShadows{
+  -moz-box-shadow: 0 0 1px @black;
+  -webkit-box-shadow: 0 0 1px @black;
+  box-shadow: 0 0 1px @black; 
+}
+
 .blueBackground{
   background-image:url('./assets/header-bg.jpg');
 }
@@ -80,6 +92,12 @@
 
 .clear{
   clear:both;
+}
+.right{
+  float:right;
+}
+.left{
+  float:left;
 }
 
 .solidBorder(@width: 1px){
@@ -138,6 +156,24 @@ hr{
     margin-left: 10px;
     line-height: 30px;
     letter-spacing: -2px;
+  }
+  
+  .helpButton{
+    height:20px;
+    width:20px;
+    background-color:@darkBlue;
+    .smallBorderRadius;
+    .right;
+    color:@lightBlue;
+    text-align: center;
+    line-height: 20px;
+    .fancyFont;
+    margin-top: 5px; 
+    .microDropShadows;
+  }
+  .helpButton:hover{
+    background-color:@lightBlue;
+    color:@darkBlue;
   }
 }
 
@@ -204,35 +240,47 @@ hr{
   display:none;
   width:@detailWidth;
   height:@pageHeight - (2* @pageInset);
-  overflow: scroll;
   margin: @menuMargin;
   border-radius: 3px;
   font-size:16px;
   background:none;
+  
+
 }
 
-  .halfCol{
-    width:@detailWidth / 2;
-    float:left;
-  }
-  .thirdCol{
-    width:@detailWidth / 3;
-    float:left;
-  }
-  .twoThirdsCol{
-    width:@detailWidth * (2/3);
-    float:left;
-  }
+.col{
+    overflow-y:scroll;
+    height:@pageHeight - (2 * @pageInset) - @menuSelectedHeight - (4 * @menuMargin);
+}
+
+.halfCol{
+  width:@detailWidth / 2;
+  float:left;
+  .col;
+}
+.thirdCol{
+  width:@detailWidth / 3;
+  float:left;
+  .col;
+}
+.twoThirdsCol{
+  width:@detailWidth * (2/3);
+  float:left;
+  .col;
+}
 
 iframe{
   .noBorder;
 }
+
+
 
 @menuMargin: 20px;
 @menuBorderWidth: 1px;
 @menuPadding: 10px;
 @menuTileMargin: 20px;
 @menuWidth:@pageWidth -  @pageInset * 2;
+@menuSelectedHeight: 10px;
 
 .section(@color){
   .tile(@color);
@@ -273,7 +321,7 @@ iframe{
   }
   
   .selected{
-    height:10px;
+    height:@menuSelectedHeight;
   }
   
   div{
@@ -328,10 +376,18 @@ iframe{
     .tweetImage{
       float:left;
       margin-right: 5px;
+      width:48px;
+      height:48px;
     }
     
     .tweetText{
       font-size:11px;
     }
+  }
+}
+
+  .qtip{
+    font-family:Helvetica,Arial,sans-serif;
+    font-weight:bold;
   }
 }  

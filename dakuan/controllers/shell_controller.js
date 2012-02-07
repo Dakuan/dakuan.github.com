@@ -7,10 +7,18 @@ $.Controller('Dakuan.Controllers.Shell',
 /** @Prototype */
 {
 	init : function(){
+		
+		this.element.prepend(this.view());
 		this.showHomeScreen();
 	},
 	showHomeScreen : function(){
 		$('#content').dakuan_home();
+	},
+	'.helpButton click': function(){
+		
+		$('.qtip').each(function(){
+		   $(this).qtip('show');
+		});
 	}
 })
 })
