@@ -62,6 +62,8 @@ $.Controller('Dakuan.Controllers.Detail',
 		
 		this.element.slideUp(2000, function(){
 			
+			$.route.removeAttr('detail')
+			
 			$(document).trigger('detailHidden');
 		});
 	},
@@ -73,7 +75,7 @@ $.Controller('Dakuan.Controllers.Detail',
 	
 	'{document} requestDetail': function(el, ev, args){
 		
-		this.show(args,$.route.attr('animate'));
+		this.show(args, $.route.attr('animate'));
 	}
 })
 })
