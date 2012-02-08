@@ -192,10 +192,10 @@ hr{
   background-color: @black;
   font-size: 22px;
 }
-
+@beige:#EEDEAF;
 #content{
   .smallBorderRadius;
-  .verticalGradient(#111);
+  .verticalGradient(@beige, lighten(@beige, 10%));
   width:@contentWidth;
   height:@pageHeight -  @pageInset * 2;
   margin:@pageInset;
@@ -222,16 +222,18 @@ hr{
 @tileWidth : (@contentWidth - (6 * @menuPadding) - (4 * @menuTileMargin) - 6) / 3;
 
 .tile(@color){
-  color:white;
+  color:#444;
   border-color: @color;
-  background-color:black;
+  background-color:@beige;
   &.hover{
-    border-color: lighten(@color, 10%);
-    background-color: saturate(@color, 40%); 
+    border-color: lighten(@color, 5%);
+    background-color: saturate(@color, 5%);
+    color:#ddd; 
   }
   &.selected{
     border-color: @color;
-    background-color:@color;  
+    background-color:@color;
+    color:#ddd;  
   }
 }
 
@@ -346,22 +348,22 @@ iframe{
 }
 
  .mobile{
-   .section(#D9305D);
+   .section(#7fadba);
   }
   .web{
-    .section(#394273);
+    .section(#bf6f30);
   }
   .dev{
-    .section(#F28A2E);
+    .section(#688536);
   }
   .about{
-    .section(#007C24);
+    .section(#a14d3f);
   }
   .job{
-    .section(#D92525);
+    .section(#656d62);
   }
   .git{
-    .section(#0088A5);
+    .section(#c2715f);
   }
 
 #menu{
