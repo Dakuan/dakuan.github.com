@@ -363,7 +363,7 @@ iframe{
       .verticalGradient(lighten(@color, 10%), fade(@color, 5%));
       border-color:lighten(@color, 5%);
     }
-    .tweet{
+    .tweet, .repo{
       background-color:fade(@color, 10%);
     }
   }
@@ -468,4 +468,23 @@ iframe{
 .qtip{
     font-family:Helvetica,Arial,sans-serif;
     font-weight:bold;
+}
+/*
+ * github page
+ */
+.repo{
+  list-style:none;
+  .smallBorderRadius;
+  margin-bottom:5px;
+  padding: 5px;
+  h3{
+    border:none;
+    margin-top:0px;
+    margin-bottom:0px;
+  }
+  p{
+    margin:0px;
+    font-size:11px;
+  }
+  .solidBorder();
 }

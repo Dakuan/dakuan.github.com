@@ -3,11 +3,15 @@ steal( 'jquery/controller',
 	   'jquery/dom/form_params',
 	   'jquery/controller/view')
 	.then('jquery/ui',function($){
-$.Controller('Dakuan.Controllers.Repo',
+$.Controller('Dakuan.Controllers.Github',
 {
 	init : function(){
 		
-		this.element.html(this.view(Dakuan.Models.Repo.findAll()));
+		var deferred = Dakuan.Models.Repo.findAll();
+		
+		this.element.html('//dakuan/views/github/repos', Dakuan.Models.Repo.findAll(), function(){
+			$('#repoContainer').tinyscrollbar();
+		});		
 	}
 })
 })

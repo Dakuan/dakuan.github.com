@@ -33,6 +33,10 @@ $.Controller('Dakuan.Controllers.Detail',
 				$('#twitterContainer').dakuan_twitter();
 				
 				break;
+				
+			case 'git':
+				
+				$('#repoContainer').dakuan_github();
 			default:
 				
 				//this.element.html(this.view('home/' + section));

@@ -5,5 +5,6 @@ steal(
 	'./detail_controller.js',
 	'./twitter_controller.js',
 	'./twitter_notification_controller.js',
-	'./twitter_list_controller.js'
+	'./twitter_list_controller.js',
+	'./github_controller.js'
 )

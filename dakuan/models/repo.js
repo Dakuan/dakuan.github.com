@@ -10,11 +10,9 @@ $.Model('Dakuan.Models.Repo',
 /* @Static */
 {
 	findAll: function(){
-		
-
-		
+				
 		return $.ajax({
-      		url: 'https://api.github.com/users/dakuan/repos&callback=?',
+      		url: 'https://api.github.com/users/dakuan/repos',
       		type: 'get',
       		dataType : 'json repo.models' 
     	});
