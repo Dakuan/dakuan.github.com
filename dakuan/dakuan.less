@@ -31,6 +31,7 @@
 /*
  *  Numbers
  */
+
 @headerHeight:50px;
 @pageWidth:924px;
 @pageHeight:656px;
@@ -49,6 +50,7 @@
 /*
  * Generic Classes
  */
+
 .smallBorderRadius{
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -212,7 +214,7 @@ hr{
 #content{
   .smallBorderRadius;
   .verticalGradient(@beige, lighten(@beige, 10%));
-    background-image:url('./assets/paperbg.jpg');
+  background-image:url('./assets/paperbg.jpg');
   width:@contentWidth;
   height:@pageHeight -  @pageInset * 2;
   margin:@pageInset;
@@ -360,7 +362,7 @@ iframe{
       .verticalGradient(darken(@color, 10%), @color);
     }
     .track{
-      .verticalGradient(lighten(@color, 10%), fade(@color, 5%));
+      .verticalGradient(fade(@color, 40%), fade(@color, 20%));
       border-color:lighten(@color, 5%);
     }
     .tweet, .repo{

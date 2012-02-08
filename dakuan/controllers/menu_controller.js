@@ -32,26 +32,41 @@ $.Controller('Dakuan.Controllers.Menu',
 	show : function(selectedTile){
 		
 		this.clear();
-		
+			
 		this.element.html(this.options.view);
 		
-		if(selectedTile != ""){
+		if($.route.attr('animate') !== 'false'){
+							
+			if(selectedTile != ""){
+				
+				$('.' + selectedTile).click();
+				
+				this.element.show();
+				
+				this.onShown();	
+			}
+			else{
+				
+				this.element.show('scale', 1000, this.callback('onShown'));			
+			}
+		}
+		else{
 			
-			$('.' + selectedTile).click();
+			this.options.selectedTile = selectedTile;
+			
+			$('.' + selectedTile).addClass('selected').addClass('stage2');
+			
+			$('#menu div').not('.selected').hide();
 			
 			this.element.show();
 			
-			this.onShown();
-		}
-		else{
-			this.element.show('scale', 1000, this.callback('onShown'));
+			$(document).trigger('requestDetail', this.options.selectedTile)
 		}
 	},
 	
 	onShown:function(){
 		
-		this.options.collapsed = false;
-		
+		this.options.collapsed = false;	
 			
 		$(document).trigger('menuShown');
 	},
@@ -145,7 +160,7 @@ $.Controller('Dakuan.Controllers.Menu',
 		
 			el.insertBefore(before);
 		}
-
+		
 		el.addClass('selected', this.options.time, this.options.easing, this.callback('switchTo'));
 	}
 })

@@ -9,9 +9,9 @@ $.Controller('Dakuan.Controllers.Home',
 		
 		this.element.html(this.view());
 		
-		$('#menu').dakuan_menu($.route.attr('detail'));
-		
 		$('#detailContainer').dakuan_detail();
+		
+		$('#menu').dakuan_menu($.route.attr('detail'));	
 	}
 })
 })

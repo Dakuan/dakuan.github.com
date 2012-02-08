@@ -37,6 +37,9 @@ $.Controller('Dakuan.Controllers.Detail',
 			case 'git':
 				
 				$('#repoContainer').dakuan_github();
+				
+				break;
+				
 			default:
 				
 				//this.element.html(this.view('home/' + section));
@@ -44,7 +47,7 @@ $.Controller('Dakuan.Controllers.Detail',
 				
 		if(animate == true){
 			
-			this.element.show('bounce', this.callback('onShowComplete'));
+			this.element.show('scale', this.callback('onShowComplete'));
 		}
 		else{
 			
@@ -63,7 +66,7 @@ $.Controller('Dakuan.Controllers.Detail',
 	
 	hide: function(){
 
-		this.element.slideUp(2000, function(){
+		this.element.fadeOut(500, function(){
 			
 			$.route.removeAttr('detail');
 			
@@ -79,6 +82,8 @@ $.Controller('Dakuan.Controllers.Detail',
 	},
 	
 	'{document} requestDetail': function(el, ev, args){
+		
+		steal.dev.log('devils detail');
 		
 		this.show(args, $.route.attr('animate'));
 	}
