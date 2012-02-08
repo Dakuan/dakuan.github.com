@@ -62,7 +62,9 @@ $.Controller('Dakuan.Controllers.Detail',
 		
 		this.element.slideUp(2000, function(){
 			
-			$.route.removeAttr('detail')
+			$.route.removeAttr('detail');
+			
+			$.route.removeAttr('animate');
 			
 			$(document).trigger('detailHidden');
 		});

@@ -298,21 +298,24 @@ iframe{
   .track { 
     background-color: #D8EEFD; 
     height: 100%; 
-    width:13px; 
+    width:9px; 
     position: relative; 
     padding: 0 1px;
-    .smallBorderRadius;  
+    .smallBorderRadius;
+    padding-bottom:2px;
+
   }
   .thumb { 
     margin-top:1px;
     margin-bottom:1px;
     height: 20px; 
-    width: 13px; 
+    width: 7px; 
     cursor: pointer; 
     overflow: hidden; 
     position: absolute; 
     top: 0;
-    .smallBorderRadius; 
+    .smallBorderRadius;
+    .solidBorder; 
     }
   .disable{ 
     display: none; 
@@ -336,7 +339,8 @@ iframe{
       .verticalGradient(darken(@color, 10%), @color);
     }
     .track{
-      .verticalGradient(lighten(@color, 15%), lighten(@color, 5%));
+      .verticalGradient(lighten(@color, 10%), lighten(@color, 5%));
+      border-color:lighten(@color, 5%);
     }
   }
 }
