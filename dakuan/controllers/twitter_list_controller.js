@@ -43,7 +43,7 @@ $.Controller('Dakuan.Controllers.TwitterList',{
 			
 			var self = this;
 			
-			$(tweet.elements()[0]).slideDown(function(){
+			$(tweet.elements()[0]).slideDown(100, 'easeInOutCirc', function(){
 				
 				self.chain(tweets, ++start, count, onComplete);
 			});

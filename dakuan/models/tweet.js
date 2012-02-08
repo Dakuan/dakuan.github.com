@@ -10,10 +10,11 @@ $.Model('Dakuan.Models.Tweet',
 /* @Static */
 {
 	findAll: function(){
-						
+		
+				
 		return $.ajax({
-      		//url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=MostlyHarmlessd&callback=?',
-      		url:'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=domtestbarker&callback=?',
+      		url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=MostlyHarmlessd&callback=?',
+      		//url:'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=domtestbarker&callback=?',
       		type: 'get',
       		dataType : 'json tweet.models' 
     	});
