@@ -14,11 +14,20 @@
 /*
  * Colours
  */
+
 @black : #000;
 @white: #fff;
 @darkBlue: #046;
 @lightBlue: #3BF;
 @beige:#EEDEAF;
+
+@mobileColor:#7fadba;
+@webColor:#bf6f30;
+@devColor:#688536;
+@aboutColor:#a14d3f;
+@jobColor:#656d62;
+@gitColor:#c2715f;
+
 /*
  *  Numbers
  */
@@ -26,10 +35,16 @@
 @pageWidth:924px;
 @pageHeight:656px;
 @pageInset:50px;
-
 @generalMargin:40px;
-
 @contentWidth:@pageWidth -  @pageInset * 2;
+@tileWidth : (@contentWidth - (6 * @menuPadding) - (4 * @menuTileMargin) - 6) / 3;
+@detailWidth : @contentWidth - ((@menuMargin * 2) + (@menuBorderWidth * 2));
+@menuMargin: 20px;
+@menuBorderWidth: 1px;
+@menuPadding: 10px;
+@menuTileMargin: 20px;
+@menuWidth:@pageWidth -  @pageInset * 2;
+@menuSelectedHeight: 10px;
 
 /*
  * Generic Classes
@@ -221,7 +236,7 @@ hr{
   }
 }
 
-@tileWidth : (@contentWidth - (6 * @menuPadding) - (4 * @menuTileMargin) - 6) / 3;
+
 
 .tile(@color){
   color:#444;
@@ -242,7 +257,7 @@ hr{
   }
 }
 
-@detailWidth : @contentWidth - ((@menuMargin * 2) + (@menuBorderWidth * 2));
+
 
 #detailContainer{
   clear:both;
@@ -329,12 +344,6 @@ iframe{
   }
 }
 
-@menuMargin: 20px;
-@menuBorderWidth: 1px;
-@menuPadding: 10px;
-@menuTileMargin: 20px;
-@menuWidth:@pageWidth -  @pageInset * 2;
-@menuSelectedHeight: 10px;
 
 .section(@color){
   .tile(@color);
@@ -353,29 +362,28 @@ iframe{
 }
 
  .mobile{
-   .section(#7fadba);
+   .section(@mobileColor);
   }
   .web{
-    .section(#bf6f30);
+    .section(@webColor);
   }
   .dev{
-    .section(#688536);
+    .section(@devColor);
   }
   .about{
-    .section(#a14d3f);
+    .section(@aboutColor);
   }
   .job{
-    .section(#656d62);
+    .section(@jobColor);
   }
   .git{
-    .section(#c2715f);
+    .section(@gitColor);
   }
 
 #menu{
   
   width: @menuWidth;
-  //margin: @menuMargin;
-  
+
   .square{
     width: @tileWidth;
     height: @tileWidth;
@@ -418,7 +426,6 @@ iframe{
     height:10px;
     float: none;
   }
-
 }
  
 #twitterContainer{
@@ -446,9 +453,7 @@ iframe{
     }
   }
 }
-
-  .qtip{
+.qtip{
     font-family:Helvetica,Arial,sans-serif;
     font-weight:bold;
-  }
-}  
+}
