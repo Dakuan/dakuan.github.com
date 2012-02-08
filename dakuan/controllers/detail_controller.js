@@ -33,7 +33,6 @@ $.Controller('Dakuan.Controllers.Detail',
 				$('#twitterContainer').dakuan_twitter();
 				
 				break;
-				
 			default:
 				
 				//this.element.html(this.view('home/' + section));
@@ -59,7 +58,7 @@ $.Controller('Dakuan.Controllers.Detail',
 	},
 	
 	hide: function(){
-		
+
 		this.element.slideUp(2000, function(){
 			
 			$.route.removeAttr('detail');

@@ -18,7 +18,7 @@
 @white: #fff;
 @darkBlue: #046;
 @lightBlue: #3BF;
-
+@beige:#EEDEAF;
 /*
  *  Numbers
  */
@@ -193,10 +193,11 @@ hr{
   background-color: @black;
   font-size: 22px;
 }
-@beige:#EEDEAF;
+
 #content{
   .smallBorderRadius;
   .verticalGradient(@beige, lighten(@beige, 10%));
+    background-image:url('./assets/paperbg.jpg');
   width:@contentWidth;
   height:@pageHeight -  @pageInset * 2;
   margin:@pageInset;
@@ -226,15 +227,18 @@ hr{
   color:#444;
   border-color: @color;
   background-color:@beige;
+  text-shadow: 0px 01px 0px #DDD;
   &.hover{
     border-color: lighten(@color, 5%);
     background-color: saturate(@color, 5%);
-    color:#ddd; 
+    color:#ddd;
+    text-shadow: 0px 1px 0px #888; 
   }
   &.selected{
     border-color: @color;
     background-color:@color;
     color:#ddd;  
+    text-shadow: 0px 1px 0px #888; 
   }
 }
 
@@ -284,7 +288,7 @@ iframe{
     height: 100%; 
     overflow: hidden;
     position: relative;
-    margin-right:40px; 
+    margin-right:10px; 
   }
   .overview { 
     list-style: none; 
@@ -423,13 +427,13 @@ iframe{
     
     clear: both;
     margin-bottom:5px;
-    
-    border-width: 0px 0px 1px 0px;
+    border-width: 1px;
     border-style: solid;
     padding: 4px;
     min-height: 50px;
     line-height: 15px;
-    
+    background-color: rgba(255, 0, 0, 0.1);
+    .smallBorderRadius;
     .tweetImage{
       float:left;
       margin-right: 5px;
