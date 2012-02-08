@@ -41,21 +41,21 @@ $.Controller('Dakuan.Controllers.Detail',
 				
 		if(animate == true){
 			
-			this.element.show('bounce', function(){
-				
-				$.route.attr('animate', false);
-				
-				this.element.filter('.scrollContainer').tinyscrollbar();
-			});
+			this.element.show('bounce', this.callback('onShowComplete'));
 		}
 		else{
 			
 			this.element.show();
 			
-			$.route.attr('animate', false);
-			
-			this.element.filter('.scrollContainer').tinyscrollbar();
+			this.onShowComplete();
 		}
+	},
+	
+	onShowComplete: function(){
+		
+		$.route.attr('animate', false);
+				
+		this.element.filter('.scrollContainer').tinyscrollbar();
 	},
 	
 	hide: function(){
