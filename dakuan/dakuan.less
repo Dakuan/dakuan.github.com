@@ -316,7 +316,7 @@ iframe{
   .scrollbar { 
     position: relative; 
     float: right; 
-    width: 15px; 
+    width: 11px; 
   }
   .track { 
     height: 100%; 
@@ -365,8 +365,9 @@ iframe{
       .verticalGradient(fade(@color, 40%), fade(@color, 20%));
       border-color:lighten(@color, 5%);
     }
-    .tweet, .repo{
+    .tweet, .repo, .jobCell{
       background-color:fade(@color, 10%);
+      border-color:darken(@color, 15%);
     }
   }
 }
@@ -471,15 +472,13 @@ iframe{
     font-family:Helvetica,Arial,sans-serif;
     font-weight:bold;
 }
-/*
- * github page
- */
-.repo{
+
+.cell{
   list-style:none;
   .smallBorderRadius;
   margin-bottom:5px;
   padding: 5px;
-  h3{
+  h3, h4{
     border:none;
     margin-top:0px;
     margin-bottom:0px;
@@ -489,4 +488,17 @@ iframe{
     font-size:11px;
   }
   .solidBorder();
+}
+
+.repo{
+  .cell;
+}
+
+.jobCell{
+  .cell;
+}
+
+ul.cellContainer{
+  margin: 0px;
+  padding:0px;
 }

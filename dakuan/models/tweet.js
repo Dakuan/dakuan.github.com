@@ -9,11 +9,9 @@ steal('jquery/model', function(){
 $.Model('Dakuan.Models.Tweet',
 /* @Static */
 {
-	findAll: function(){
-		
-				
+	findAll: function(){			
 		return $.ajax({
-      		url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=MostlyHarmlessd&callback=?',
+      		url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=MostlyHarmlessd&exclude_replies=true&callback=?',
       		//url:'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=domtestbarker&callback=?',
       		type: 'get',
       		dataType : 'json tweet.models' 
@@ -65,13 +63,26 @@ $.Model('Dakuan.Models.Tweet',
 					
 				default:
 				
-  					hashedText += element;
+		  			if(self.validUrl(element)){
+						
+						var newelement = '<a href="' + element + '">' + element + '</a>';
+					}
+					else{
+						
+						var newelement = element;
+					}
+				
+  					hashedText += newelement;
   			}
-  			
+  				
   			hashedText += ' ';
   		});
   		
   		return hashedText;	
-  	}
+  	},
+  	validUrl : function(str) {
+		var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+		return regexp.test(str);
+	}
 });
 })
