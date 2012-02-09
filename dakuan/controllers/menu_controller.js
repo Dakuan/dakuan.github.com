@@ -60,6 +60,8 @@ $.Controller('Dakuan.Controllers.Menu',
 			
 			this.element.show();
 			
+			this.options.collapsed = true;
+			
 			$(document).trigger('requestDetail', this.options.selectedTile)
 		}
 	},

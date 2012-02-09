@@ -238,28 +238,22 @@ hr{
   }
 }
 
-
-
 .tile(@color){
-  color:#444;
   border-color: @color;
   background-color:desaturate(@color, 40%);
-  //text-shadow: 0px 01px 0px #DDD;
+  color:#aaa;
+  text-shadow: 0px 1px 1px #333;  
   &.hover{
     border-color: darken(@color, 30%);
     background-color: saturate(@color, 5%);
     color:#ddd;
-    text-shadow: 0px 1px 1px #333; 
   }
   &.selected{
     border-color: @color;
     background-color:@color;
     color:#ddd;  
-    text-shadow: 0px 1px 1px #333; 
   }
 }
-
-
 
 #detailContainer{
   clear:both;
@@ -348,6 +342,8 @@ iframe{
 .section(@color){
   .tile(@color);
   &.detailContent{
+    color:#333;
+    text-shadow: 0px -1px 0px #fff;
     a{
       color:@color;
     }

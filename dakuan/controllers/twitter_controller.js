@@ -15,27 +15,11 @@ $.Controller('Dakuan.Controllers.Twitter',{
 		var state = new $.Observe({queLength : 0, tweets: new Dakuan.Models.Tweet.List()});
 		
 		this.twitterState = state
-		
-		
+			
 		var deferredTweets = Dakuan.Models.Tweet.findAll();
 		
 		deferredTweets.done(this.callback('onRecievedTweets'));
-		/*
-		var array = new Array();
-    	
-    	for(var i = 0; i < 20; i++){
-    		array.push(new Dakuan.Models.Tweet({
-    			id: i,
-    			text: 'hello meow ' + i,
-    			user: {
-    				profile_image_url_https: 'https://si0.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
-    			}
-    			
-    		}));
-    	}
-    	
-		this.onRecievedTweets(array);
-		*/
+
 		$('#twitterHeader a').qtip(Dakuan.QtipFactory.buildHelperTip());
 				
 		this.notification = $('#twitterNotificationContainer').dakuan_twitter_notification({quedTweets: this.twitterState}).controller();
