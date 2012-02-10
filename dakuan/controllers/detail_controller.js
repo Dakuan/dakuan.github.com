@@ -85,6 +85,17 @@ $.Controller('Dakuan.Controllers.Detail',
 		steal.dev.log('devils detail');
 
 		this.show(args, $.route.attr('animate'));
+	},
+	
+	'.jobCell click': function(el){
+
+		$('.expanded').slideUp(500, function(){
+			$('.expanded').removeClass('expanded');	
+		});
+		
+		$('.jobContent', el).slideToggle(500, function(){
+			$('.jobContent', el).addClass('expanded');
+		});
 	}
 })
 })

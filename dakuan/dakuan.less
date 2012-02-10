@@ -343,7 +343,7 @@ iframe{
   .tile(@color);
   &.detailContent{
     color:#333;
-    text-shadow: 0px -1px 0px #fff;
+    text-shadow: 0px -1px 0px #eee;
     a{
       color:@color;
     }
@@ -362,6 +362,7 @@ iframe{
       border-color:lighten(@color, 5%);
     }
     .tweet, .repo, .jobCell{
+      color:#333;
       background-color:fade(@color, 10%);
       border-color:darken(@color, 15%);
     }
@@ -481,7 +482,7 @@ iframe{
   }
   p{
     margin:0px;
-    font-size:11px;
+    font-size:13px;
   }
   .solidBorder();
 }
@@ -492,6 +493,13 @@ iframe{
 
 .jobCell{
   .cell;
+  .jobContent{
+    line-height:14px;
+    display:none;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  
+  }
 }
 
 ul.cellContainer{

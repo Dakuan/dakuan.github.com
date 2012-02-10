@@ -17,9 +17,7 @@ $.Controller('Dakuan.Controllers.TwitterList',{
 	prependTweets : function(tweets){
 				
 		this.chain(tweets, 0, tweets.length, function(){
-			
-			$('#twitterContainer .scrollContainer').tinyscrollbar_update()
-			
+					
 			$(document).trigger('twitterListInit');
 		});
 	},
@@ -44,6 +42,8 @@ $.Controller('Dakuan.Controllers.TwitterList',{
 			var self = this;
 			
 			$(tweet.elements()[0]).slideDown(100, 'easeInOutCirc', function(){
+				
+				$('#twitterContainer .scrollContainer').tinyscrollbar_update()
 				
 				self.chain(tweets, ++start, count, onComplete);
 			});

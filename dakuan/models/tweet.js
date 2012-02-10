@@ -12,7 +12,6 @@ $.Model('Dakuan.Models.Tweet',
 	findAll: function(){			
 		return $.ajax({
       		url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=MostlyHarmlessd&exclude_replies=true&callback=?',
-      		//url:'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=domtestbarker&callback=?',
       		type: 'get',
       		dataType : 'json tweet.models' 
     	});
@@ -21,7 +20,6 @@ $.Model('Dakuan.Models.Tweet',
   	create : "/tweets.json",
  	update : "/tweets/{id}.json",
   	destroy : "/tweets/{id}.json"
-
 },
 /* @Prototype */
 {
