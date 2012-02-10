@@ -25,8 +25,8 @@
 @webColor:#bf6f30;
 @devColor:#688536;
 @aboutColor:#a14d3f;
-@jobColor:#656d62;
-@gitColor:#c2715f;
+@jobColor:#1d8c4c;
+@gitColor:#945282;
 
 /*
  *  Numbers
@@ -86,8 +86,8 @@
 }
 
 .verticalGradient(@topColor: #fff, @bottomColor: #000){
-  /*
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}');
+/*
+  filter: ~"progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}')";
 
   -ms-filter: "progid: DXImageTransform.Microsoft.gradient(startColorstr = '@topColor', endColorstr = '@bottomColor')";
 */
@@ -242,7 +242,7 @@ hr{
   border-color: @color;
   background-color:desaturate(@color, 40%);
   color:#aaa;
-  text-shadow: 0px 1px 1px #333;  
+  text-shadow: 0px 1px 1px #333;
   &.hover{
     border-color: darken(@color, 30%);
     background-color: saturate(@color, 5%);
@@ -293,6 +293,7 @@ iframe{
 }
 
 .scrollContainer {
+    @scrollWidth: 7px;
   height:100%;
   .viewport { 
     height: 100%; 
@@ -310,34 +311,34 @@ iframe{
   .scrollbar { 
     position: relative; 
     float: right; 
-    width: 11px; 
+    width: @scrollWidth;
+    margin-left:10px;
   }
   .track { 
     height: 100%; 
-    width:9px; 
+    width:@scrollWidth;
     position: relative; 
     padding: 0 1px;
     .smallBorderRadius;
+    padding-left:0px;
+    padding-right: 0px;
     padding-bottom:2px;
-
   }
   .thumb { 
     margin-top:1px;
     margin-bottom:1px;
     height: 20px; 
-    width: 7px; 
+    width: @scrollWidth;
     cursor: pointer; 
     overflow: hidden; 
     position: absolute; 
     top: 0;
     .smallBorderRadius;
-    margin-left:1px;
     }
   .disable{ 
     display: none; 
   }
 }
-
 
 .section(@color){
   .tile(@color);
@@ -358,7 +359,7 @@ iframe{
       .verticalGradient(darken(@color, 10%), @color);
     }
     .track{
-      .verticalGradient(fade(@color, 40%), fade(@color, 20%));
+      .verticalGradient(fade(@color, 30%), fade(@color, 20%));
       border-color:lighten(@color, 5%);
     }
     .tweet, .repo, .jobCell{
@@ -395,6 +396,7 @@ iframe{
   .square{
     width: @tileWidth;
     height: @tileWidth;
+    cursor:pointer;
   }
   
   .selected{
@@ -492,13 +494,13 @@ iframe{
 }
 
 .jobCell{
-  .cell;
-  .jobContent{
-    line-height:14px;
-    display:none;
-    margin-top: 2px;
-    margin-bottom: 2px;
-  
+    .cell;
+    cursor:pointer;
+    .jobContent{
+        line-height:14px;
+        display:none;
+        margin-top: 2px;
+        margin-bottom: 2px;
   }
 }
 
