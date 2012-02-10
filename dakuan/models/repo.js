@@ -12,7 +12,7 @@ $.Model('Dakuan.Models.Repo',
 	findAll: function(){
 				
 		return $.ajax({
-      		url: 'https://api.github.com/users/dakuan/repos',
+      		url: 'https://api.github.com/users/dakuan/repos?callback=',
       		type: 'get',
       		dataType : 'json repo.models' 
     	});
