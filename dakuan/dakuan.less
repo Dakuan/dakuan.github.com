@@ -6,11 +6,14 @@
  }
 
 .fancyFont{
-  font-family:"Museo Slab 300", Rockwell, Georgia, serif; 
-  font-weight:300; 
-  font-style:normal;
+  font-family: MuseoSlab-500;
+  font-weight: normal;
+  font-style: normal;
 }
 
+
+ @font-face {font-family: 'MuseoSlab-500';src: url('webfonts/1FDFA8_0_0.eot');src: url('webfonts/1FDFA8_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/1FDFA8_0_0.woff') format('woff'),url('webfonts/1FDFA8_0_0.ttf') format('truetype');}
+ 
 /*
  * Colours
  */
@@ -25,8 +28,8 @@
 @webColor:#bf6f30;
 @devColor:#688536;
 @aboutColor:#a14d3f;
-@jobColor:#1d8c4c;
-@gitColor:#945282;
+@jobColor:#8a1a1e;
+@gitColor:#14324a;
 
 /*
  *  Numbers
@@ -155,6 +158,9 @@ a:hover{
 hr{
   border:none;border-top:1px dotted #000;
 }
+iframe{
+  .noBorder;
+}
 
 /*
  * Custom Classes
@@ -186,10 +192,10 @@ hr{
     .right;
     color:@lightBlue;
     text-align: center;
-    line-height: 20px;
     .fancyFont;
     margin-top: 5px; 
     .microDropShadows;
+    cursor:pointer;
   }
   .helpButton:hover{
     background-color:@lightBlue;
@@ -288,18 +294,15 @@ hr{
   .col;
 }
 
-iframe{
-  .noBorder;
-}
+
 
 .scrollContainer {
-    @scrollWidth: 7px;
+  @scrollWidth: 7px;
   height:100%;
   .viewport { 
     height: 100%; 
     overflow: hidden;
     position: relative;
-    margin-right:10px; 
   }
   .overview { 
     list-style: none; 
