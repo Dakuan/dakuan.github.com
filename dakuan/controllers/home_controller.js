@@ -2,7 +2,7 @@ steal( 'jquery/controller',
        'jquery/view/ejs',
 	   'jquery/dom/form_params',
 	   'jquery/controller/view')
-	.then('jquery/ui',function($){
+	.then(function($){
 $.Controller('Dakuan.Controllers.Home',
 {
 	init : function(){
@@ -12,6 +12,7 @@ $.Controller('Dakuan.Controllers.Home',
 		$('#detailContainer').dakuan_detail();
 		
 		$('#menu').dakuan_menu($.route.attr('detail'));	
+		
 	}
 })
 })

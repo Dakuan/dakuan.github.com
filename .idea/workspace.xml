@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d997c9c5-be9d-49e0-a05d-d6d7b1128c64" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dakuan/views/job/init.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dakuan/controllers/controllers.js" afterPath="$PROJECT_DIR$/dakuan/controllers/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dakuan/controllers/detail_controller.js" afterPath="$PROJECT_DIR$/dakuan/controllers/detail_controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dakuan/dakuan.less" afterPath="$PROJECT_DIR$/dakuan/dakuan.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dakuan/views/home/job.ejs" afterPath="$PROJECT_DIR$/dakuan/views/home/job.ejs" />
     </list>
     <ignored path="dakuan.github.com.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,22 +32,93 @@
       <file leaf-file-name="detail_controller.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dakuan/controllers/detail_controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0">
+            <state line="43" column="40" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dakuan.less" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="dakuan.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dakuan/dakuan.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="676" selection-end="676" vertical-scroll-proportion="0.20813008">
+            <state line="36" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="job_controller.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dakuan/controllers/job_controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="34" selection-start="464" selection-end="464" vertical-scroll-proportion="0.48985508">
+              <folding>
+                <element signature="e#574#1224#0" expanded="false" />
+                <element signature="e#636#823#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery/jquery.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5010" column="0" selection-start="130045" selection-end="130045" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dakuan/controllers/controllers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="24" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="github_controller.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dakuan/controllers/github_controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="8" selection-start="265" selection-end="312" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="job.ejs" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dakuan/views/home/job.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="init.ejs" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dakuan/views/job/init.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="5" selection-start="1222" selection-end="1222" vertical-scroll-proportion="-25.6">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu_controller.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dakuan/controllers/menu_controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="1" selection-start="0" selection-end="3578" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
   </component>
   <component name="Git.Settings">
     <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
@@ -54,9 +128,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/dakuan/controllers/detail_controller.js" />
         <option value="$PROJECT_DIR$/dakuan/views/home/web.ejs" />
         <option value="$PROJECT_DIR$/dakuan/dakuan.less" />
+        <option value="$PROJECT_DIR$/dakuan/views/home/job.ejs" />
+        <option value="$PROJECT_DIR$/dakuan/views/job/init.ejs" />
+        <option value="$PROJECT_DIR$/dakuan/controllers/detail_controller.js" />
+        <option value="$PROJECT_DIR$/dakuan/controllers/controllers.js" />
+        <option value="$PROJECT_DIR$/dakuan/controllers/job_controller.js" />
       </list>
     </option>
   </component>
@@ -153,7 +231,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
+              <option name="myItemId" value="job" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dakuan.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dakuan.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dakuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="github" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -244,8 +344,8 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293556" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293556" sideWeight="0.60152674" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3984733" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -312,11 +412,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jquery/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4998" column="4" selection-start="129697" selection-end="129697" vertical-scroll-proportion="0.36673346" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dakuan/views/home/dev.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -327,15 +422,69 @@
         <state line="13" column="35" selection-start="289" selection-end="289" vertical-scroll-proportion="0.254023" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dakuan/controllers/detail_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dakuan/dakuan.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="676" selection-end="676" vertical-scroll-proportion="0.20813008">
+        <state line="36" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dakuan/controllers/menu_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="1" selection-start="0" selection-end="3578" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dakuan/controllers/github_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="8" selection-start="265" selection-end="312" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dakuan/views/job/init.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="5" selection-start="1222" selection-end="1222" vertical-scroll-proportion="-25.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dakuan/views/home/job.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dakuan/controllers/detail_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="40" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5010" column="0" selection-start="130045" selection-end="130045" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dakuan/controllers/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="24" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dakuan/controllers/job_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="34" selection-start="464" selection-end="464" vertical-scroll-proportion="0.48985508">
+          <folding>
+            <element signature="e#574#1224#0" expanded="false" />
+            <element signature="e#636#823#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

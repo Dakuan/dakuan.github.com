@@ -3,14 +3,11 @@ steal( 'jquery/controller',
 	   'jquery/dom/form_params',
 	   'jquery/controller/view',
 	   'jquery/lang/observe')
-	.then('jquery/ui',function($){
+	.then(function($){
 $.Controller('Dakuan.Controllers.Detail',
 {
 	init : function(){
 
-		var self = this;
-
-		$.route.delegate('detail', 'set', this.callback('onRouteDetailSet'));
 	},
 
 	onRouteDetailSet: function(ev, newVal){
@@ -24,7 +21,7 @@ $.Controller('Dakuan.Controllers.Detail',
 
 		this.element.children().remove();
 
-		this.element.html(this.view('home/' + section));
+		this.element.html(this.view(section));
 
 		switch(section){
 
@@ -38,6 +35,10 @@ $.Controller('Dakuan.Controllers.Detail',
 				$('#repoContainer').dakuan_github();
 
 				break;
+
+            case 'job':
+
+                $('#jobs').dakuan_job();
 
 			default:
 
@@ -64,8 +65,12 @@ $.Controller('Dakuan.Controllers.Detail',
 	},
 
 	hide: function(){
+		
+		var self = this;
 
 		this.element.fadeOut(500, function(){
+			
+			self.element.children().remove();
 
 			$.route.removeAttr('detail');
 
@@ -76,7 +81,6 @@ $.Controller('Dakuan.Controllers.Detail',
 	},
 
 	'{document} hideDetail' : function(el, ev){
-
 		this.hide();
 	},
 
@@ -86,24 +90,5 @@ $.Controller('Dakuan.Controllers.Detail',
 
 		this.show(args, $.route.attr('animate'));
 	},
-	
-	'.jobCell click': function(el){
-
-		if(el.children('.expanded').length > 0){
-			$('.expanded', el).slideUp(500, function(){
-				$('.expanded').removeClass('expanded');	
-			});
-		}
-		else{
-			
-			$('.expanded').slideUp(500, function(){
-				$('.expanded').removeClass('expanded');	
-			});
-			
-			$('.jobContent', el).slideToggle(500, function(){
-				$('.jobContent', el).addClass('expanded');
-			});	
-		}
-	}
 })
 })

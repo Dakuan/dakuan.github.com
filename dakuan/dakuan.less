@@ -24,12 +24,14 @@
 @lightBlue: #3BF;
 @beige:#EEDEAF;
 
-@mobileColor:#7fadba;
-@webColor:#bf6f30;
+@darkText: #333;
+
+@mobileColor:#688E99;
+@webColor:#BF7B45;
 @devColor:#688536;
 @aboutColor:#a14d3f;
-@jobColor:#8a1a1e;
-@gitColor:#14324a;
+@jobColor:#8A3034;
+@gitColor:#253A4A;
 
 /*
  *  Numbers
@@ -346,7 +348,7 @@ iframe{
 .section(@color){
   .tile(@color);
   &.detailContent{
-    color:#333;
+    color:@darkText;
     text-shadow: 0px -1px 0px #eee;
     a{
       color:@color;
@@ -366,9 +368,14 @@ iframe{
       border-color:lighten(@color, 5%);
     }
     .tweet, .repo, .jobCell{
-      color:#333;
+      color:@darkText;
       background-color:fade(@color, 10%);
       border-color:darken(@color, 15%);
+    }
+    .jobCell:hover{
+      h3{
+        color:@color;
+      }
     }
   }
 }
@@ -400,6 +407,7 @@ iframe{
     width: @tileWidth;
     height: @tileWidth;
     cursor:pointer;
+    display:none;
   }
   
   .selected{
