@@ -23,12 +23,6 @@ $.Controller('Dakuan.Controllers.Shell',
 		$('.qtip').each(function(){
 		   $(this).qtip('show');
 		});
-	},
-	
-	'{document} requestDetail' : function(el, ev, data){
-		steal.dev.log(el);
-		steal.dev.log(ev);
-		steal.dev.log(data);
 	}
 })
 })

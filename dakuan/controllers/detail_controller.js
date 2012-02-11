@@ -10,13 +10,6 @@ $.Controller('Dakuan.Controllers.Detail',
 
 	},
 
-	onRouteDetailSet: function(ev, newVal){
-
-		if(newVal){
-			this.show(newVal, true);
-		}
-	},
-
 	show : function(section, animate){
 
 		this.element.children().remove();
