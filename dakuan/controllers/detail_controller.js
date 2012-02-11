@@ -82,6 +82,6 @@ $.Controller('Dakuan.Controllers.Detail',
 		steal.dev.log('devils detail');
 
 		this.show(args, $.route.attr('animate'));
-	},
+	}
 })
 })
