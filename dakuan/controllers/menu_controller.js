@@ -1,169 +1,181 @@
 steal( 'jquery/controller',
        'jquery/view/ejs',
 	   'jquery/dom/form_params',
-	   'jquery/controller/view')
+	   'jquery/controller/view',
+    	'jquery/event/hover')
 	.then(function($){
 $.Controller('Dakuan.Controllers.Menu',
 {
 	defaults : {
 		time : 300,
 		easing: 'easeInOutSine',
-		collapsed: false
+		collapsed: false,
+		selectedTile: undefined
   	}
 },
 /** @Prototype */
 {
 	init : function(el, selectedTile){
-			
-		this.options.view = this.view();
+					
+		this.element.html(this.view());
 		
-		this.show(selectedTile);
+		this.options.selectedTile = selectedTile;
+		
+		this.ifAnimate(this.callback('animateShow'), this.callback('show'));
+	},
+	show: function(){
+		this.element.children().show();
+		this.onShowComplete();
+	},
+	animateShow: function(){
+		var self = this;	
+		var tiles = this.element.children();
+		var numberOfTiles = tiles.length;
+		var i = 0;
+		tiles.show('scale', this.options.time, function(){
+			i++;
+			if(i=== numberOfTiles){
+				self.onShowComplete();
+			}
+		});
 	},
 	
-	clear : function(){
-		
-		this.options.selectedTile = "";
-		
-		this.element.children().remove();
-		
-		this.element.hide();
+	onShowComplete: function(){
+		steal.dev.log('menu has been shown');
+		this.options.collapsed = false;
+		this.detailRequested = false;
+		if(this.options.selectedTile){
+			this.collapseTo(this.options.selectedTile);
+		}
 	},
 	
-	show : function(selectedTile){
+	'.square hoverenter' : function(el, ev){
 		
-		this.clear();
+		el.addClass('hover', this.options.time);
+	},
+	
+	'.square hoverleave' : function(el, ev){
 			
-		this.element.html(this.options.view);
+		el.removeClass('hover', this.options.time);
+	},
+	
+	ifAnimate: function(ifTrue, ifFalse){
 		
-		if($.route.attr('animate') !== 'false'){
-							
-			if(selectedTile != ""){
-				
-				$('.' + selectedTile).click();
-				
-				this.element.show();
-				
-				this.onShown();	
-			}
-			else{
-				
-				this.element.show('scale', 1000, this.callback('onShown'));			
-			}
+		var animate = $.route.attr('animate');
+		
+		if(animate == true || animate === undefined){
+			ifTrue();
 		}
 		else{
-			
-			this.options.selectedTile = selectedTile;
-			
-			$('.' + selectedTile).addClass('selected').addClass('stage2');
-			
-			$('#menu div').not('.selected').hide();
-			
-			this.element.show();
-			
-			this.options.collapsed = true;
-			
-			$(document).trigger('requestDetail', this.options.selectedTile)
+			ifFalse();
 		}
 	},
 	
-	onShown:function(){
+	collapseTo: function(tileName){
 		
-		this.options.collapsed = false;	
-			
-		$(document).trigger('menuShown');
-	},
-	
-	'.square mouseover' : function(el, ev){
+		var tile = $('.' + tileName, this.element);
+		
+		//shunt it to the front			
+		this.moveTileToFront(tile);
+		
+		//shrink it
+		var self= this;
+		
+		var count = 0;
+		
+		var animate = $.route.attr('animate');
+		
+		if(animate == true || animate === undefined){
+		
+			tile.addClass('selected', this.options.time, function(){
 				
-		this.addRemoveHover(el, false);
-	},
+				var tilesToHide = $(':not(.selected)', self.element);
+				
+				var numberOfTiles = tilesToHide.length;
+				var i = 0;
+				tilesToHide.addClass('deselected', self.options.time, function(){							
+					i++;
+					if(i === numberOfTiles){
+						i = 0;
+						tilesToHide.fadeOut('fast', function(){
+							i++;
+							if(i === numberOfTiles){
 	
-	'.square mouseout' : function(el, ev){
-			
-		this.addRemoveHover(el, true);
-	},
-	
-	addRemoveHover: function(el, remove){
+								tile.addClass('stage2', self.options.time, function(){
+									
+									self.options.collapsed = true;
 		
-		var element = $(el);
-		
-		if(remove){
-			
-			element.is('h2') ? element.parent().removeClass('hover', this.options.time) : element.removeClass('hover', this.options.time);
+									$(document).trigger('requestDetail', self.options.selectedTile);
+								});
+							}
+						});
+					}
+				});
+			});
 		}
 		else{
+			tile.addClass('selected').addClass('stage2');
 			
-			element.is('h2') ? element.parent().addClass('hover', this.options.time) : element.addClass('hover', this.options.time);
-		}
-	},
+			$(':not(.selected)', self.element).addClass('deselected').fadeOut();
+			
+			self.options.collapsed = true;
 		
-	fadeOutDeselected: function(index, element){
+			$(document).trigger('requestDetail', self.options.selectedTile);
+		}	
+	},
+	
+	'{document} detailHidden': function(){
+				
+		var tile = $('.selected', this.element);
+		
+		var tilesToShow = $('.deselected');
 		
 		var self = this;
-				
-		$(element).addClass('deselected', self.options.time, self.options.easing, function(){
+		
+		tile.removeClass('stage2', this.options.time, function(){
+			var numberOfTiles = tilesToShow.length;
+			var i = 0;		
+			tilesToShow.addClass('selected').removeClass('deselected').show('scale', self.options.time, function(){
+				i++;
+				if(i === numberOfTiles){
+					setTimeout(function(){
+						$('.square').removeClass('selected', self.options.time, function(){
+						self.options.collapsed = false;
+					});
+					}, 70)
 			
-			$(element).fadeOut(self.options.time, self.options.easing, function(){
-				
-				if($('#menu div:visible').length === 1){
-					
-					$('.selected').addClass('stage2', self.options.time, self.options.easing, function(){
-				
-						$('.stage2').qtip(Dakuan.QtipFactory.buildHelperTip('Click this to return to the menu.', {
-						   		my: 'bottom left',
-						   		at: 'top center'
-						   	}));
-						
-						self.options.collapsed = true;
-						
-						if($.route.attr('detail') != self.options.selectedTile){
-							
-							$.route.attr('detail', self.options.selectedTile);
-						}
-						else{
-							$(document).trigger('requestDetail', self.options.selectedTile)
-						}
-					});	
 				}
 			});
 		});
 	},
 	
-	switchTo: function(){
-				
+	
+	moveTileToFront: function(tile){
+		
+		if($('#menu div').index(tile) > 0){
+
+			var before = $('#menu div')[0];
+			tile.insertBefore(before);
+		}
+	},
+
+	'.square click': function(el, ev){
 		if(!this.options.collapsed){
-								
-			$('#menu div').not('.selected').each(this.callback('fadeOutDeselected'));
+			
+			//need to show the menu
+			var tileName = el.attr('class').split(' ')[1];
+			
+			this.options.selectedTile = tileName;
+			
+			$.route.attr('detail', tileName);
+					
+			this.collapseTo(tileName);
 		}
 		else{
-			$(document).trigger('hideDetail');
-		}			
-	},
-	
-	'{document} detailHidden' : function(el, ev){
-		
-		// qtip could leak, best not give it the chance
-		$('.stage2').qtip('destroy');
-				
-		var menuElements = $('#menu div');
-		
-		menuElements.removeClass('selected').removeClass('deselected').removeClass('stage2');
-				
-		this.show();
-	},
-	
-	'#menu div click': function(el, ev){
-		
-		this.options.selectedTile = el.attr('class').split(' ')[1];
-		
-		if($('#menu div').index(el) > 0 && this.options.collapsed === false){
+			this.options.selectedTile = false;
 			
-			var before = $('#menu div')[0];
-		
-			el.insertBefore(before);
-		}
-		
-		el.addClass('selected', this.options.time, this.options.easing, this.callback('switchTo'));
+			$(document).trigger('hideDetail');
+		}	
 	}
 })
 })

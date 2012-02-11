@@ -6,11 +6,14 @@
  }
 
 .fancyFont{
-  font-family:"Museo Slab 300", Rockwell, Georgia, serif; 
-  font-weight:300; 
-  font-style:normal;
+  font-family: MuseoSlab-500;
+  font-weight: normal;
+  font-style: normal;
 }
 
+
+ @font-face {font-family: 'MuseoSlab-500';src: url('webfonts/1FDFA8_0_0.eot');src: url('webfonts/1FDFA8_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/1FDFA8_0_0.woff') format('woff'),url('webfonts/1FDFA8_0_0.ttf') format('truetype');}
+ 
 /*
  * Colours
  */
@@ -21,12 +24,14 @@
 @lightBlue: #3BF;
 @beige:#EEDEAF;
 
-@mobileColor:#7fadba;
-@webColor:#bf6f30;
+@darkText: #333;
+
+@mobileColor:#688E99;
+@webColor:#BF7B45;
 @devColor:#688536;
 @aboutColor:#a14d3f;
-@jobColor:#656d62;
-@gitColor:#c2715f;
+@jobColor:#8A3034;
+@gitColor:#253A4A;
 
 /*
  *  Numbers
@@ -86,8 +91,8 @@
 }
 
 .verticalGradient(@topColor: #fff, @bottomColor: #000){
-  /*
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}');
+/*
+  filter: ~"progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}')";
 
   -ms-filter: "progid: DXImageTransform.Microsoft.gradient(startColorstr = '@topColor', endColorstr = '@bottomColor')";
 */
@@ -155,6 +160,9 @@ a:hover{
 hr{
   border:none;border-top:1px dotted #000;
 }
+iframe{
+  .noBorder;
+}
 
 /*
  * Custom Classes
@@ -186,10 +194,10 @@ hr{
     .right;
     color:@lightBlue;
     text-align: center;
-    line-height: 20px;
     .fancyFont;
     margin-top: 5px; 
     .microDropShadows;
+    cursor:pointer;
   }
   .helpButton:hover{
     background-color:@lightBlue;
@@ -242,7 +250,7 @@ hr{
   border-color: @color;
   background-color:desaturate(@color, 40%);
   color:#aaa;
-  text-shadow: 0px 1px 1px #333;  
+  text-shadow: 0px 1px 1px #333;
   &.hover{
     border-color: darken(@color, 30%);
     background-color: saturate(@color, 5%);
@@ -288,17 +296,15 @@ hr{
   .col;
 }
 
-iframe{
-  .noBorder;
-}
+
 
 .scrollContainer {
+  @scrollWidth: 7px;
   height:100%;
   .viewport { 
     height: 100%; 
     overflow: hidden;
     position: relative;
-    margin-right:10px; 
   }
   .overview { 
     list-style: none; 
@@ -310,39 +316,39 @@ iframe{
   .scrollbar { 
     position: relative; 
     float: right; 
-    width: 11px; 
+    width: @scrollWidth;
+    margin-left:10px;
   }
   .track { 
     height: 100%; 
-    width:9px; 
+    width:@scrollWidth;
     position: relative; 
     padding: 0 1px;
     .smallBorderRadius;
+    padding-left:0px;
+    padding-right: 0px;
     padding-bottom:2px;
-
   }
   .thumb { 
     margin-top:1px;
     margin-bottom:1px;
     height: 20px; 
-    width: 7px; 
+    width: @scrollWidth;
     cursor: pointer; 
     overflow: hidden; 
     position: absolute; 
     top: 0;
     .smallBorderRadius;
-    margin-left:1px;
     }
   .disable{ 
     display: none; 
   }
 }
 
-
 .section(@color){
   .tile(@color);
   &.detailContent{
-    color:#333;
+    color:@darkText;
     text-shadow: 0px -1px 0px #eee;
     a{
       color:@color;
@@ -358,13 +364,18 @@ iframe{
       .verticalGradient(darken(@color, 10%), @color);
     }
     .track{
-      .verticalGradient(fade(@color, 40%), fade(@color, 20%));
+      .verticalGradient(fade(@color, 30%), fade(@color, 20%));
       border-color:lighten(@color, 5%);
     }
     .tweet, .repo, .jobCell{
-      color:#333;
+      color:@darkText;
       background-color:fade(@color, 10%);
       border-color:darken(@color, 15%);
+    }
+    .jobCell:hover{
+      h3{
+        color:@color;
+      }
     }
   }
 }
@@ -395,6 +406,8 @@ iframe{
   .square{
     width: @tileWidth;
     height: @tileWidth;
+    cursor:pointer;
+    display:none;
   }
   
   .selected{
@@ -492,13 +505,13 @@ iframe{
 }
 
 .jobCell{
-  .cell;
-  .jobContent{
-    line-height:14px;
-    display:none;
-    margin-top: 2px;
-    margin-bottom: 2px;
-  
+    .cell;
+    cursor:pointer;
+    .jobContent{
+        line-height:14px;
+        display:none;
+        margin-top: 2px;
+        margin-bottom: 2px;
   }
 }
 
