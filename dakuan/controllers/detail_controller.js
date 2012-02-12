@@ -19,6 +19,7 @@ $.Controller('Dakuan.Controllers.Detail',
 		switch(section){
 
 			case 'about':
+			
 				$('#twitterContainer').dakuan_twitter();
 
 				break;
@@ -33,6 +34,14 @@ $.Controller('Dakuan.Controllers.Detail',
 
                 $('#jobs').dakuan_job();
 
+				break;
+				
+			case 'web':
+			
+				$('#mapContainer').dakuan_map_map();
+				
+				break;
+				
 			default:
 
 				//this.element.html(this.view('home/' + section));

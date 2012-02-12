@@ -30,7 +30,7 @@ $.Model('Dakuan.Models.Tweet',
 	
 	makeUrl: function(href, text){
 		
-		return '<a href="' + href + '">' + text + '</a>'
+		return '<a target="_blank" href="' + href + '">' + text + '</a>'
 	},
 	
   	getHash:function(text){
@@ -63,7 +63,7 @@ $.Model('Dakuan.Models.Tweet',
 				
 		  			if(self.validUrl(element)){
 						
-						var newelement = '<a href="' + element + '">' + element + '</a>';
+						var newelement = self.makeUrl(element, element);
 					}
 					else{
 						

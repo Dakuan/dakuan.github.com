@@ -146,6 +146,7 @@ body{
 }
 
 ul{
+  margin:0px;
   padding:0 0 0 20px;
 }
 p{
@@ -307,7 +308,7 @@ iframe{
     position: relative;
   }
   .overview { 
-    list-style: none; 
+    //list-style: none; 
     position: absolute; 
     left: 0; 
     top: 0; 
@@ -377,6 +378,28 @@ iframe{
         color:@color;
       }
     }
+    #mapContainer{
+      //width:100%;
+      height:464px;
+      clear:both;
+      #mapSearch{
+        height: 452px;
+        .solidBorder;
+        .smallBorderRadius;
+        margin-left:10px;
+        width: 166px;
+        float: right;
+        padding: 5px;
+        select{
+          width: 100%;
+        }
+        li{
+          font-size: 13px;
+          line-height: 16px;
+        }
+      }
+    }
+    
   }
 }
 
