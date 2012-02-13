@@ -1,14 +1,1 @@
-steal(
-	'./home_controller.js',
-	'./shell_controller.js',
-	'./menu_controller.js',
-	'./detail_controller.js',
-	'./twitter_controller.js',
-	'./twitter_notification_controller.js',
-	'./twitter_list_controller.js',
-	'./github_controller.js',
-    './job_controller.js',
-    './map/map_controller.js',
-    './map/genus_select_controller.js',
-    './map/map_search_controller.js'
-)
+steal('./home_controller.js', './shell_controller.js', './menu_controller.js', './detail_controller.js', './twitter_controller.js', './twitter_notification_controller.js', './twitter_list_controller.js', './github_controller.js', './job_controller.js', './map/map_controller.js', './map/genus_select_controller.js', './map/map_search_controller.js')
