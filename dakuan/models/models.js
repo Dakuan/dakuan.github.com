@@ -1,1 +1,9 @@
-steal('./tweet.js', './tweets.js', './repo.js')
+steal('./tweet.js', 
+	'./tweets.js', 
+	'./repo.js', 
+	'./map/basemodel.js', 
+	'./map/localelabel.js', 
+	'./map/genus.js',
+	'./map/species.js',
+	'./map/locale.js',
+	'./map/locales.js')

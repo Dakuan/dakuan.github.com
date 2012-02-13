@@ -6,11 +6,14 @@
  }
 
 .fancyFont{
-  font-family:"Museo Slab 100", Rockwell, Georgia, serif; 
-  font-weight:100; 
-  font-style:normal;
+  font-family: MuseoSlab-500;
+  font-weight: normal;
+  font-style: normal;
 }
 
+
+ @font-face {font-family: 'MuseoSlab-500';src: url('webfonts/1FDFA8_0_0.eot');src: url('webfonts/1FDFA8_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/1FDFA8_0_0.woff') format('woff'),url('webfonts/1FDFA8_0_0.ttf') format('truetype');}
+ 
 /*
  * Colours
  */
@@ -21,16 +24,19 @@
 @lightBlue: #3BF;
 @beige:#EEDEAF;
 
-@mobileColor:#7fadba;
-@webColor:#bf6f30;
+@darkText: #333;
+
+@mobileColor:#688E99;
+@webColor:#BF7B45;
 @devColor:#688536;
 @aboutColor:#a14d3f;
-@jobColor:#656d62;
-@gitColor:#c2715f;
+@jobColor:#8A3034;
+@gitColor:#253A4A;
 
 /*
  *  Numbers
  */
+
 @headerHeight:50px;
 @pageWidth:924px;
 @pageHeight:656px;
@@ -49,6 +55,7 @@
 /*
  * Generic Classes
  */
+
 .smallBorderRadius{
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -84,8 +91,8 @@
 }
 
 .verticalGradient(@topColor: #fff, @bottomColor: #000){
-  /*
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}');
+/*
+  filter: ~"progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}')";
 
   -ms-filter: "progid: DXImageTransform.Microsoft.gradient(startColorstr = '@topColor', endColorstr = '@bottomColor')";
 */
@@ -139,6 +146,7 @@ body{
 }
 
 ul{
+  margin:0px;
   padding:0 0 0 20px;
 }
 p{
@@ -152,6 +160,9 @@ a:hover{
 }
 hr{
   border:none;border-top:1px dotted #000;
+}
+iframe{
+  .noBorder;
 }
 
 /*
@@ -184,10 +195,10 @@ hr{
     .right;
     color:@lightBlue;
     text-align: center;
-    line-height: 20px;
     .fancyFont;
     margin-top: 5px; 
     .microDropShadows;
+    cursor:pointer;
   }
   .helpButton:hover{
     background-color:@lightBlue;
@@ -212,7 +223,7 @@ hr{
 #content{
   .smallBorderRadius;
   .verticalGradient(@beige, lighten(@beige, 10%));
-    background-image:url('./assets/paperbg.jpg');
+  background-image:url('./assets/paperbg.jpg');
   width:@contentWidth;
   height:@pageHeight -  @pageInset * 2;
   margin:@pageInset;
@@ -236,28 +247,22 @@ hr{
   }
 }
 
-
-
 .tile(@color){
-  color:#444;
   border-color: @color;
-  background-color:@beige;
-  text-shadow: 0px 01px 0px #DDD;
+  background-color:desaturate(@color, 40%);
+  color:#aaa;
+  text-shadow: 0px 1px 1px #333;
   &.hover{
-    border-color: lighten(@color, 5%);
+    border-color: darken(@color, 30%);
     background-color: saturate(@color, 5%);
     color:#ddd;
-    text-shadow: 0px 1px 0px #888; 
   }
   &.selected{
     border-color: @color;
     background-color:@color;
     color:#ddd;  
-    text-shadow: 0px 1px 0px #888; 
   }
 }
-
-
 
 #detailContainer{
   clear:both;
@@ -268,6 +273,7 @@ hr{
   border-radius: 3px;
   font-size:16px;
   background:none;
+  text-shadow: 0px -1px 0px #EEE;
 }
 
 .col{
@@ -291,22 +297,18 @@ hr{
   .col;
 }
 
-iframe{
-  .noBorder;
-}
-#twitterHeader{
-  height:50px;
-}
+
+
 .scrollContainer {
+  @scrollWidth: 7px;
   height:100%;
   .viewport { 
     height: 100%; 
     overflow: hidden;
     position: relative;
-    margin-right:10px; 
   }
   .overview { 
-    list-style: none; 
+    //list-style: none; 
     position: absolute; 
     left: 0; 
     top: 0; 
@@ -315,49 +317,89 @@ iframe{
   .scrollbar { 
     position: relative; 
     float: right; 
-    width: 15px; 
+    width: @scrollWidth;
+    margin-left:10px;
   }
   .track { 
-    background-color: #D8EEFD; 
     height: 100%; 
-    width:9px; 
+    width:@scrollWidth;
     position: relative; 
     padding: 0 1px;
     .smallBorderRadius;
+    padding-left:0px;
+    padding-right: 0px;
     padding-bottom:2px;
-
   }
   .thumb { 
     margin-top:1px;
     margin-bottom:1px;
     height: 20px; 
-    width: 7px; 
+    width: @scrollWidth;
     cursor: pointer; 
     overflow: hidden; 
     position: absolute; 
     top: 0;
     .smallBorderRadius;
-    .solidBorder; 
     }
   .disable{ 
     display: none; 
   }
 }
 
-
 .section(@color){
   .tile(@color);
   &.detailContent{
+    color:@darkText;
+    text-shadow: 0px -1px 0px #eee;
     a{
       color:@color;
+    }
+    h2{
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      margin-right: 10px;
+      padding-bottom: 7px;
+      border-color:lighten(@color, 15%);
     }
     .thumb{
       .verticalGradient(darken(@color, 10%), @color);
     }
     .track{
-      .verticalGradient(lighten(@color, 10%), lighten(@color, 5%));
+      .verticalGradient(fade(@color, 30%), fade(@color, 20%));
       border-color:lighten(@color, 5%);
     }
+    .tweet, .repo, .jobCell{
+      color:@darkText;
+      background-color:fade(@color, 10%);
+      border-color:darken(@color, 15%);
+    }
+    .jobCell:hover{
+      h3{
+        color:@color;
+      }
+    }
+    #mapContainer{
+      //width:100%;
+      height:464px;
+      clear:both;
+      #mapSearch{
+        height: 452px;
+        .solidBorder;
+        .smallBorderRadius;
+        margin-left:10px;
+        width: 166px;
+        float: right;
+        padding: 5px;
+        select{
+          width: 100%;
+        }
+        li{
+          font-size: 13px;
+          line-height: 16px;
+        }
+      }
+    }
+    
   }
 }
 
@@ -387,6 +429,8 @@ iframe{
   .square{
     width: @tileWidth;
     height: @tileWidth;
+    cursor:pointer;
+    display:none;
   }
   
   .selected{
@@ -430,22 +474,26 @@ iframe{
  
 #twitterContainer{
   
+  #twitterHeader{
+    height: 30px;
+  }
+  
   .tweet{
-    
+    text-shadow: none;
     clear: both;
     margin-bottom:5px;
     border-width: 1px;
     border-style: solid;
     padding: 4px;
-    min-height: 50px;
+    height: 60px;
     line-height: 15px;
-    background-color: rgba(255, 0, 0, 0.1);
     .smallBorderRadius;
     .tweetImage{
       float:left;
       margin-right: 5px;
       width:48px;
       height:48px;
+      margin-top: 6px;
     }
     
     .tweetText{
@@ -456,4 +504,41 @@ iframe{
 .qtip{
     font-family:Helvetica,Arial,sans-serif;
     font-weight:bold;
+}
+
+.cell{
+  list-style:none;
+  .smallBorderRadius;
+  margin-bottom:5px;
+  padding: 5px;
+  h3, h4{
+    border:none;
+    margin-top:0px;
+    margin-bottom:0px;
+  }
+  p{
+    margin:0px;
+    font-size:13px;
+  }
+  .solidBorder();
+}
+
+.repo{
+  .cell;
+}
+
+.jobCell{
+    .cell;
+    cursor:pointer;
+    .jobContent{
+        line-height:14px;
+        display:none;
+        margin-top: 2px;
+        margin-bottom: 2px;
+  }
+}
+
+ul.cellContainer{
+  margin: 0px;
+  padding:0px;
 }

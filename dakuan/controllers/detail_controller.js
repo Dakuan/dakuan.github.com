@@ -3,79 +3,93 @@ steal( 'jquery/controller',
 	   'jquery/dom/form_params',
 	   'jquery/controller/view',
 	   'jquery/lang/observe')
-	.then('jquery/ui',function($){
+	.then(function($){
 $.Controller('Dakuan.Controllers.Detail',
 {
 	init : function(){
-		
-		var self = this;
-		
-		$.route.delegate('detail', 'set', this.callback('onRouteDetailSet'));
+
 	},
-	
-	onRouteDetailSet: function(ev, newVal){
-			
-		if(newVal){
-			this.show(newVal, true);
-		}
-	},
-	
+
 	show : function(section, animate){
-		
+
 		this.element.children().remove();
-		
-		this.element.html(this.view('home/' + section));
-		
+
+		this.element.html(this.view(section));
+
 		switch(section){
-			
+
 			case 'about':
 			
 				$('#twitterContainer').dakuan_twitter();
+
+				break;
+
+			case 'git':
+
+				$('#repoContainer').dakuan_github();
+
+				break;
+
+            case 'job':
+
+                $('#jobs').dakuan_job();
+
+				break;
+				
+			case 'web':
+			
+				$('#mapContainer').dakuan_map_map();
 				
 				break;
-			default:
 				
+			default:
+
 				//this.element.html(this.view('home/' + section));
 		}
-				
+
 		if(animate == true){
-			
-			this.element.show('bounce', this.callback('onShowComplete'));
+
+			this.element.show('scale', this.callback('onShowComplete'));
 		}
 		else{
-			
+
 			this.element.show();
-			
+
 			this.onShowComplete();
 		}
 	},
-	
+
 	onShowComplete: function(){
-		
+
 		$.route.attr('animate', false);
-				
+
 		this.element.filter('.scrollContainer').tinyscrollbar();
 	},
-	
-	hide: function(){
 
-		this.element.slideUp(2000, function(){
+	hide: function(){
+		
+		var self = this;
+
+		this.element.fadeOut(500, function(){
 			
+			self.element.children().remove();
+
 			$.route.removeAttr('detail');
-			
+
 			$.route.removeAttr('animate');
-			
+
 			$(document).trigger('detailHidden');
 		});
 	},
-	
+
 	'{document} hideDetail' : function(el, ev){
-		
 		this.hide();
 	},
-	
+
 	'{document} requestDetail': function(el, ev, args){
-		
+
+		steal.dev.log('devils detail');
+
 		this.show(args, $.route.attr('animate'));
 	}
 })
