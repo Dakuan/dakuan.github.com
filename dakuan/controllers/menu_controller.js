@@ -16,11 +16,27 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			this.options.selectedTile = selectedTile;
 
 			this.ifAnimate(this.callback('animateShow'), this.callback('show'));
+			
+			$.route.delegate('detail', 'set', this.callback('onRouteDetailSet'));
+			
+			$.route.delegate('detail', 'remove', this.callback('onRouteDetailRemove'));
 		},
+		
+		onRouteDetailSet: function(event, newVal, oldVal){
+			this.options.selectedTile = newVal;
+			this.collapseTo(newVal);
+		},
+			
+		onRouteDetailRemove: function(){
+			this.options.selectedTile = false;
+			$(document).trigger('hideDetail');
+		},
+		
 		show: function() {
 			this.element.children().show();
 			this.onShowComplete();
 		},
+		
 		animateShow: function() {
 			var self = this;
 			var tiles = this.element.children();
@@ -149,26 +165,22 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			if ( $('#menu div').index(tile) > 0 ) {
 
 				var before = $('#menu div')[0];
+				
 				tile.insertBefore(before);
 			}
 		},
 
 		'.square click': function( el, ev ) {
+			
 			if (!this.options.collapsed ) {
 
-				//need to show the menu
 				var tileName = el.attr('class').split(' ')[1];
 
-				this.options.selectedTile = tileName;
-
 				$.route.attr('detail', tileName);
-
-				this.collapseTo(tileName);
 			}
 			else {
-				this.options.selectedTile = false;
-
-				$(document).trigger('hideDetail');
+						
+				$.route.removeAttr('detail');
 			}
 		}
 	})

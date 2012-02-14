@@ -8,7 +8,7 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 
 			this.element.children().remove();
 
-			this.element.html(this.view(section));
+			this.element.html($.View('//dakuan/views/detail/' + section));
 
 			switch ( section ) {
 
@@ -68,7 +68,7 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 
 				self.element.children().remove();
 
-				$.route.removeAttr('detail');
+				//$.route.removeAttr('detail');
 
 				$.route.removeAttr('animate');
 
