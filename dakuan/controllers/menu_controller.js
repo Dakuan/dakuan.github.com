@@ -28,13 +28,18 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			
 			$.route.delegate('detail', 'remove', this.callback('onRouteDetailRemove'));
 		},
+		
 		/*
 		 * Handles when the value of the routes detail attribute is set
+		 * @param {event} event The jQuery event.
+		 * @param {string} newVal The new value of the route's detail attribute
+		 * @param {string} oldVal The old value of the route's detail attribute
 		 */
 		onRouteDetailSet: function(event, newVal, oldVal){
 			this.options.selectedTile = newVal;
 			this.collapseTo(newVal);
 		},
+		
 		/*
 		 * Handles the routes detail attribute being removed
 		 */	
@@ -42,6 +47,7 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			this.options.selectedTile = false;
 			$(document).trigger('hideDetail');
 		},
+		
 		/*
 		 * Shows the menu without animation
 		 */
@@ -49,6 +55,7 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			this.element.children().show();
 			this.onShowComplete();
 		},
+		
 		/*
 		 * Shows the menu with animation
 		 */
@@ -64,6 +71,7 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 				}
 			});
 		},
+		
 		/*
 		 * Handles the completion of the show process
 		 */
@@ -76,17 +84,10 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			}
 		},
 
-		'.square hoverenter': function( el, ev ) {
-
-			el.addClass('hover', this.options.time);
-		},
-
-		'.square hoverleave': function( el, ev ) {
-
-			el.removeClass('hover', this.options.time);
-		},
 		/*
 		 * Helper function for switching between animated and non animate paths
+		 * @param {function} ifTrue The function to execute if the animation flag is true
+		 * @param {function} ifFalse The function to exectue if the animation flag is set to true
 		 */
 		ifAnimate: function( ifTrue, ifFalse ) {
 
@@ -99,7 +100,11 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 				ifFalse();
 			}
 		},
-
+		
+		/*
+		 * Collapses the menu to the specified section
+		 * @param {string} tileName The name of the tile
+		 */
 		collapseTo: function( tileName ) {
 
 			var tile = $('.' + tileName, this.element);
@@ -153,6 +158,44 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			}
 		},
 
+		/*
+		 * Moves the specified tile to the front of the list
+		 * @param {object} tile The tile jquery object
+		 */
+		moveTileToFront: function( tile ) {
+
+			if ( $('#menu div').index(tile) > 0 ) {
+
+				var before = $('#menu div')[0];
+				
+				tile.insertBefore(before);
+			}
+		},
+		
+		'.square hoverenter': function( el, ev ) {
+
+			el.addClass('hover', this.options.time);
+		},
+		
+		'.square hoverleave': function( el, ev ) {
+
+			el.removeClass('hover', this.options.time);
+		},
+		
+		'.square click': function( el, ev ) {
+			
+			if (!this.options.collapsed ) {
+
+				var tileName = el.attr('class').split(' ')[1];
+
+				$.route.attr('detail', tileName);
+			}
+			else {
+						
+				$.route.removeAttr('detail');
+			}
+		},
+		
 		'{document} detailHidden': function() {
 
 			var tile = $('.selected', this.element);
@@ -176,31 +219,6 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 					}
 				});
 			});
-		},
-
-
-		moveTileToFront: function( tile ) {
-
-			if ( $('#menu div').index(tile) > 0 ) {
-
-				var before = $('#menu div')[0];
-				
-				tile.insertBefore(before);
-			}
-		},
-
-		'.square click': function( el, ev ) {
-			
-			if (!this.options.collapsed ) {
-
-				var tileName = el.attr('class').split(' ')[1];
-
-				$.route.attr('detail', tileName);
-			}
-			else {
-						
-				$.route.removeAttr('detail');
-			}
 		}
 	})
 })
