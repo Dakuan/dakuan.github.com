@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Controllers.Twitter.prototype", "type": "prototype", "parents": ["Dakuan.Controllers.Twitter"], "comment": "", "src": "dakuan/controllers/twitter_controller.js", "line": 9, "children": ["Dakuan.Controllers.Twitter.prototype.onRecievedTweets"]})

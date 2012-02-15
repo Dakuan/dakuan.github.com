@@ -1,0 +1,1 @@
+c({"name": "clear", "params": {}, "ret": {"type": "undefined", "description": ""}, "type": "function", "comment": "<p>empties the array</p>", "src": "dakuan/models/tweets.js", "line": 6, "children": []})

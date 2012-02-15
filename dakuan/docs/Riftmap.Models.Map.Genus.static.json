@@ -1,0 +1,1 @@
+c({"name": "Riftmap.Models.Map.Genus.static", "type": "static", "parents": ["Riftmap.Models.Map.Genus"], "comment": "", "src": "dakuan/models/map/genus.js", "line": 9, "children": ["Riftmap.Models.Map.Genus.static.findAll"]})

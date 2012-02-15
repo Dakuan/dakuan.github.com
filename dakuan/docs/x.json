@@ -1,0 +1,1 @@
+c({"name": "x", "type": "attribute", "comment": "<p>If the tip is adjusted in both dimensions, or in a\ndirection that would cause it to be anywhere but the\nouter border, hide it!</p>", "src": "dakuan/lib/qtip/jquery.qtip.js", "line": 2763, "children": []})

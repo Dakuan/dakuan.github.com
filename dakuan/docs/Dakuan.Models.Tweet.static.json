@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Tweet.static", "type": "static", "parents": ["Dakuan.Models.Tweet"], "comment": "", "src": "dakuan/models/tweet.js", "line": 9, "children": ["Dakuan.Models.Tweet.static.findAll"]})

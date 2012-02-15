@@ -1,0 +1,1 @@
+c({"name": "index", "type": "page", "comment": "<h3>Dakuan's home page on github</h3>", "title": "Dakuan", "tags": ["home"], "src": "dakuan/dakuan.js", "line": 0, "children": ["map", "Dakuan.Models.Repo", "twitter"]})

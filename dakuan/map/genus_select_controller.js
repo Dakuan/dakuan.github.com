@@ -1,4 +1,5 @@
 steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/controller/view').then(function( $ ) {
+w
 	$.Controller('Dakuan.Controllers.Map.GenusSelect', {
 		init: function() {
 

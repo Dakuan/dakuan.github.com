@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Tweet.Create", "type": "class", "comment": "<p>Creates tweets</p>", "parents": ["index"], "inherits": "jQuery.Controller", "src": "dakuan/tweet/create/create.js", "line": 7, "children": ["Dakuan.Tweet.Create.prototype"]})

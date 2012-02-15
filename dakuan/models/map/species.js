@@ -1,10 +1,10 @@
 steal('jquery/model', './basemodel.js', function() {
 
 	/**
-	 * @class Riftmap.Models.Shell
-	 * @parent index
+	 * @class Dakuan.Map.Models.Species
+	 * @parent mapmodels
 	 * @inherits jQuery.Model
-	 * Wraps backend shell services.  
+	 * Wraps backend species services.  
 	 */
 	Dakuan.Map.Models.Basemodel('Dakuan.Map.Models.Species',
 	/* @Static */
@@ -12,11 +12,13 @@ steal('jquery/model', './basemodel.js', function() {
 		model: function( data ) {
 			return new this(data);
 		},
-		findAll: function() {
 
-		},
-
+		/*
+		 * Gets all the species within the specified genera
+		 * @return {Array} An array of species models
+		 */
 		findForGenus: function( genusId ) {
+			
 			var url = 'http://riftdata.apphb.com/jsclient/getspeciesforgenera/' + genusId + '?callback=?';
 
 			return $.ajax({
@@ -24,17 +26,7 @@ steal('jquery/model', './basemodel.js', function() {
 				type: 'get',
 				dataType: 'json species.models'
 			});
-		},
-		findOne: function() {
-
-		},
-		create: function() {
-
-		},
-		update: function() {
-
-		},
-		destroy: function() {}
+		}
 	},
 	/* @Prototype */
 	{});

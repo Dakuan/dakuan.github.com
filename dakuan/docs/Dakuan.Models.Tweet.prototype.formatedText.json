@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Tweet.prototype.formatedText", "params": {}, "ret": {"description": "<p>The formated text</p>", "type": "String"}, "type": "function", "parents": ["Dakuan.Models.Tweet.prototype"], "comment": "<p>Returns the tweet text with anchor elements for hashtahs @'s and urls</p>", "src": "dakuan/models/tweet.js", "line": 25, "children": []})

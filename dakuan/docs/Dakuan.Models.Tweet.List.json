@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Tweet.List", "type": "class", "comment": "<p>Wraps backend tweet services.  </p>", "parents": ["twitter"], "inherits": "jQuery.Model.List", "src": "dakuan/models/tweets.js", "line": 2, "children": ["Dakuan.Models.Tweet.List.clear", "Dakuan.Models.Tweet.List.isNew", "Dakuan.Models.Tweet.List.addIfNew"]})

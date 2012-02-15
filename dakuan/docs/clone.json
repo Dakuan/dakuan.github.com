@@ -1,0 +1,1 @@
+c({"name": "clone", "params": {"keepData": {"description": "", "type": "", "optional": false, "order": 0, "name": "keepData"}}, "ret": {"type": "undefined", "description": ""}, "type": "function", "comment": "<p>Allow clone to correctly retrieve cached title attributes </p>", "src": "dakuan/lib/qtip/jquery.qtip.js", "line": 1856, "children": []})

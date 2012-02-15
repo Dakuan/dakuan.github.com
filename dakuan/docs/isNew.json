@@ -1,0 +1,1 @@
+c({"name": "isNew", "params": {"tweet": {"description": "", "type": "", "optional": false, "order": 0, "name": "tweet"}}, "ret": {"type": "undefined", "description": ""}, "type": "function", "comment": "<p>Determines if a tweet is new or not</p>", "src": "dakuan/models/tweets.js", "line": 18, "children": []})

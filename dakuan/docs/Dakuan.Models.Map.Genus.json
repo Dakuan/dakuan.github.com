@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Map.Genus", "type": "class", "comment": "<p>Wraps backend genus services.  </p>", "parents": ["index"], "inherits": "Dakuan.Map.Models.Basemodel", "src": "dakuan/models/map/genus.js", "line": 2, "children": ["Dakuan.Models.Map.Genus.static", "Dakuan.Models.Map.Genus.prototype"]})

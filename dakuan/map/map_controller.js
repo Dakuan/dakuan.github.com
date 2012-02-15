@@ -1,5 +1,20 @@
 steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/controller/view', 'jquery/lang/observe').then(function( $ ) {
-	$.Controller('Dakuan.Controllers.Map.Map', {
+	
+	/*
+	 * @class Dakuan.Controllers.Map.Map
+	 * @parent mapcontrollers
+	 * @inherits jQuery.Controller
+	 * Controls the map widget
+	 */
+	$.Controller('Dakuan.Controllers.Map.Map', 
+	/*
+	 * @Prototype
+	 */
+	{
+		/*
+		 * gets the locales for the inital zoom level and attaches the search box controller
+		 * @return {void}
+		 */
 		init: function() {
 
 			Dakuan.Map.Models.Localelabel.findForZoomLevel(10, 1, this.callback(this.zoomToLocales));
@@ -19,6 +34,10 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			deferred.done(this.callback('addFishPins'));
 		},
 
+		/*
+		 * Adds fish pins for the specified locales
+		 * @param {Dakuan.Map.Models.Locale.List} locales The list of locales
+		 */
 		addFishPins: function( locales ) {
 
 			this.fishPinLayer.clear();
@@ -44,7 +63,11 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 				bounds: locales.getLocationRect()
 			});
 		},
-
+		
+		/*
+		 * Moves the map to view the reqested locales. If the map control does not exist, it is created.
+		 * @param {Dakuan.Map.Models.Locale.List} locales The list of locales
+		 */
 		zoomToLocales: function( locales ) {
 
 			var locations = Dakuan.Map.Models.Localelabel.localesToLocations(locales);
@@ -60,7 +83,10 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 				});
 			}
 		},
-
+		
+		/*
+		 * Creates the map. map layers and attaches event handlers
+		 */
 		createMap: function( bounds ) {
 
 			this.map = new Microsoft.Maps.Map(document.getElementById("map"), {
@@ -95,11 +121,18 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			this.map.entities.push(this.fishPinLayer);
 		},
 
+		/*
+		 * Handles the view changed event, dispatching a request for the locales in view
+		 */
 		onViewChangeEnd: function() {
 
 			Dakuan.Map.Models.Localelabel.findForZoomLevel(this.map.getZoom(), 1, this.callback('onGetLocaleData'));
 		},
-
+		
+		/*
+		 * Handles the arrival of locale data, clearing the old data, populating the new map pins and making styling tweaks
+		 * @param {Dakuan.Map.Models.List} data The list of locales
+		 */
 		onGetLocaleData: function( data ) {
 
 			this.labelsLayer.clear();

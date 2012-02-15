@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Tweet.prototype", "type": "prototype", "parents": ["Dakuan.Models.Tweet"], "comment": "", "src": "dakuan/models/tweet.js", "line": 23, "children": ["Dakuan.Models.Tweet.prototype.formatedText", "Dakuan.Models.Tweet.prototype.makeUrl", "Dakuan.Models.Tweet.prototype.validUrl"]})

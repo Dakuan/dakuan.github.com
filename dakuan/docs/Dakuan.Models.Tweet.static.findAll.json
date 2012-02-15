@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Tweet.static.findAll", "params": {}, "ret": {"description": "<p>The list of tweets</p>", "type": "Dakuan.Models.Tweet.List"}, "type": "function", "parents": ["Dakuan.Models.Tweet.static"], "comment": "<p>Finds the most recent tweets</p>", "src": "dakuan/models/tweet.js", "line": 11, "children": []})

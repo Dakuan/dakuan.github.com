@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Controllers.Menu", "type": "class", "comment": "<p>Controls the menu</p>", "parents": ["menu"], "inherits": "jQuery.Controller", "src": "dakuan/controllers/menu_controller.js", "line": 2, "children": ["Dakuan.Controllers.Menu.prototype"]})

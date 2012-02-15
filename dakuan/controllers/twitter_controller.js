@@ -1,7 +1,15 @@
 steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/controller/view', 'jquery/lang/observe').then('jquery/ui', function( $ ) {
-	$.Controller('Dakuan.Controllers.Twitter', {
-
-	}, {
+	
+		/*
+	 * @class Dakuan.Controllers.Twitter
+	 * @parent twitter
+	 * @inherits jQuery.Controller
+	 * Controls the twitter widget
+	 */
+	$.Controller('Dakuan.Controllers.Twitter',  
+	/*
+	 * @Prototype
+	 */{
 		init: function() {
 
 			this.element.html(this.view());
@@ -23,7 +31,11 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 				quedTweets: this.twitterState
 			}).controller();
 		},
-
+		
+		/*
+		 * Callback for when the initial twitter service call is completed
+		 * @param {Dakuan.Models.Tweet.List} tweets The list of tweets
+		 */
 		onRecievedTweets: function( tweets ) {
 
 			this.observer = new Dakuan.TwitterObserver(this.twitterState, tweets);

@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Controllers.Map.MapSearch", "type": "class", "comment": "<p>Controls the map search</p>", "parents": ["mapcontrollers"], "inherits": "jQuery.Controller", "src": "dakuan/map/map_search_controller.js", "line": 2, "children": ["Dakuan.Controllers.Map.MapSearch.prototype"]})

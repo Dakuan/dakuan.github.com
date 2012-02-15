@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Map.Models.Locale.List.prototype", "type": "prototype", "parents": ["Dakuan.Map.Models.Locale.List"], "comment": "", "src": "dakuan/models/map/locales.js", "line": 11, "children": ["Dakuan.Map.Models.Locale.List.prototype.getLocationRect", "Dakuan.Map.Models.Locale.List.prototype.getLocations"]})

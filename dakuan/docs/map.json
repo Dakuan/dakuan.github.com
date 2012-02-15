@@ -1,0 +1,1 @@
+c({"name": "map", "type": "page", "comment": "<p>blah blah blah the map</p>", "title": "Map Widget", "parents": ["index"], "order": 0, "src": "dakuan/map.md", "children": ["mapmodels"]})

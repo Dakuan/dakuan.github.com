@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Map.Models.Genus.static.findAll", "params": {}, "ret": {"description": "<p>the array of genera</p>", "type": "Array"}, "type": "function", "parents": ["Dakuan.Map.Models.Genus.static"], "comment": "<p>Gets all the genera</p>", "src": "dakuan/models/map/genus.js", "line": 15, "children": []})

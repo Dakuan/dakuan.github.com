@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Map.Genus.static", "type": "static", "parents": ["Dakuan.Models.Map.Genus"], "comment": "", "src": "dakuan/models/map/genus.js", "line": 9, "children": ["Dakuan.Models.Map.Genus.static.findAll"]})

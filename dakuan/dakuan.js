@@ -6,7 +6,7 @@
  *  
  */
 
-steal('steal/less', './models/models.js', './controllers/controllers.js', './classes/classes.js', '../jquery/dom/route/route.js'
+steal('steal/less', './models/models.js', './controllers/controllers.js', './classes/classes.js', '../jquery/dom/route/route.js', './map/mapsteal.js' 
 
 ).then('./dakuan.less', './lib/qtip/qtip.js', 'jquery/ui', './lib/tinyscrollbar/tinyscrollbar.js', function() {
 	$.easing.custom = function( x, t, b, c, d ) {

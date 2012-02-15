@@ -2,32 +2,42 @@ steal('jquery/model', function() {
 
 	/**
 	 * @class Dakuan.Models.Tweet
-	 * @parent index
+	 * @parent twitter
 	 * @inherits jQuery.Model
 	 * Wraps backend tweet services.  
 	 */
 	$.Model('Dakuan.Models.Tweet',
 	/* @Static */
 	{
+	  	/*
+	    * Finds the most recent tweets
+	    * @return {Dakuan.Models.Tweet.List} The list of tweets
+	    */
 		findAll: function() {
 			return $.ajax({
 				url: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=MostlyHarmlessd&exclude_replies=true&callback=?',
 				type: 'get',
 				dataType: 'json tweet.models'
 			});
-		},
-		findOne: "/tweets/{id}.json",
-		create: "/tweets.json",
-		update: "/tweets/{id}.json",
-		destroy: "/tweets/{id}.json"
+		}
 	},
 	/* @Prototype */
 	{
+		  /*
+		    * Returns the tweet text with anchor elements for hashtahs @'s and urls
+		    * @return {String} The formated text
+	    */
 		formatedText: function() {
 
 			return this.getHash(this.text);
 		},
 
+		/*
+		    * Converts text into a anchor element
+		    * @param {String} href The href for the anchor
+		    * @param {String} text The text for the anchor
+		    * @return {String} The anchor as a html string
+		*/
 		makeUrl: function( href, text ) {
 
 			return '<a target="_blank" href="' + href + '">' + text + '</a>'
@@ -78,6 +88,12 @@ steal('jquery/model', function() {
 
 			return hashedText;
 		},
+		
+		/*
+		 * Determines if the string is a Url
+		 * @return {Bool} Returns true if the string is a valid Url
+		 * @param {String} str The string to test
+		 */
 		validUrl: function( str ) {
 			var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 			return regexp.test(str);

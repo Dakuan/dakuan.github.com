@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Map.Models.Locale.List", "type": "class", "comment": "<p>Wraps backend locale services.  </p>", "parents": ["mapmodels"], "inherits": "jQuery.Model.List", "src": "dakuan/models/map/locales.js", "line": 2, "children": ["Dakuan.Map.Models.Locale.List.prototype"]})

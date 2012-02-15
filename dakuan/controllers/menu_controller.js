@@ -1,4 +1,11 @@
 steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/controller/view', 'jquery/event/hover').then(function( $ ) {
+	
+	/*
+	 * @class Dakuan.Controllers.Menu
+	 * @parent menu
+	 * @inherits jQuery.Controller
+	 * Controls the menu
+	 */
 	$.Controller('Dakuan.Controllers.Menu', {
 		defaults: {
 			time: 300,
@@ -21,22 +28,30 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			
 			$.route.delegate('detail', 'remove', this.callback('onRouteDetailRemove'));
 		},
-		
+		/*
+		 * Handles when the value of the routes detail attribute is set
+		 */
 		onRouteDetailSet: function(event, newVal, oldVal){
 			this.options.selectedTile = newVal;
 			this.collapseTo(newVal);
 		},
-			
+		/*
+		 * Handles the routes detail attribute being removed
+		 */	
 		onRouteDetailRemove: function(){
 			this.options.selectedTile = false;
 			$(document).trigger('hideDetail');
 		},
-		
+		/*
+		 * Shows the menu without animation
+		 */
 		show: function() {
 			this.element.children().show();
 			this.onShowComplete();
 		},
-		
+		/*
+		 * Shows the menu with animation
+		 */
 		animateShow: function() {
 			var self = this;
 			var tiles = this.element.children();
@@ -49,7 +64,9 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 				}
 			});
 		},
-
+		/*
+		 * Handles the completion of the show process
+		 */
 		onShowComplete: function() {
 			steal.dev.log('menu has been shown');
 			this.options.collapsed = false;
@@ -68,7 +85,9 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 
 			el.removeClass('hover', this.options.time);
 		},
-
+		/*
+		 * Helper function for switching between animated and non animate paths
+		 */
 		ifAnimate: function( ifTrue, ifFalse ) {
 
 			var animate = $.route.attr('animate');

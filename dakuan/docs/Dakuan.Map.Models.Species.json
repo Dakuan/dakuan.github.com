@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Map.Models.Species", "type": "class", "comment": "<p>Wraps backend species services.  </p>", "parents": ["mapmodels"], "inherits": "jQuery.Model", "src": "dakuan/models/map/species.js", "line": 2, "children": ["Dakuan.Map.Models.Species.static", "Dakuan.Map.Models.Species.prototype"]})

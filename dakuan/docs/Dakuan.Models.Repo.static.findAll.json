@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Repo.static.findAll", "params": {}, "ret": {"description": "<p>an array of repos</p>", "type": "Array"}, "type": "function", "parents": ["Dakuan.Models.Repo.static"], "comment": "<p>Gets all the repos from github</p>", "src": "dakuan/models/repo.js", "line": 11, "children": []})

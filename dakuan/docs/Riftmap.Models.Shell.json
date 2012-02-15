@@ -1,0 +1,1 @@
+c({"name": "Riftmap.Models.Shell", "type": "class", "comment": "<p>Wraps backend shell services.  </p>", "parents": ["index"], "inherits": "jQuery.Model", "src": "dakuan/models/map/localelabel.js", "line": 2, "children": ["Riftmap.Models.Shell.static", "Riftmap.Models.Shell.prototype"]})

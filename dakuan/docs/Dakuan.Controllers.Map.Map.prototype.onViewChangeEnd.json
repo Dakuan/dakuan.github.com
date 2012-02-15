@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Controllers.Map.Map.prototype.onViewChangeEnd", "params": {}, "ret": {"type": "undefined", "description": ""}, "type": "function", "parents": ["Dakuan.Controllers.Map.Map.prototype"], "comment": "<p>Handles the view changed event, dispatching a request for the locales in view</p>", "src": "dakuan/map/map_controller.js", "line": 123, "children": []})

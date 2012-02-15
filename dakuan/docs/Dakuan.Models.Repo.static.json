@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Repo.static", "type": "static", "parents": ["Dakuan.Models.Repo"], "comment": "", "src": "dakuan/models/repo.js", "line": 9, "children": ["Dakuan.Models.Repo.static.findAll"]})

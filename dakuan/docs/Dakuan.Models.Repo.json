@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Models.Repo", "type": "class", "comment": "<p>Wraps backend repo services.  </p>", "parents": ["index"], "inherits": "jQuery.Model", "src": "dakuan/models/repo.js", "line": 2, "children": ["Dakuan.Models.Repo.static", "Dakuan.Models.Repo.prototype"]})

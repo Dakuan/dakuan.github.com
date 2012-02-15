@@ -1,5 +1,11 @@
 steal('jquery/model', 'jquery/model/list', './tweet.js', function() {
 
+		/**
+	 * @class Dakuan.Models.Tweet.List
+	 * @parent twitter
+	 * @inherits jQuery.Model.List
+	 * Wraps backend tweet services.  
+	 */
 	$.Model.List('Dakuan.Models.Tweet.List', {
 		//static
 	}, {
@@ -16,8 +22,10 @@ steal('jquery/model', 'jquery/model/list', './tweet.js', function() {
 			});
 		},
 
-/*
+		/*
 		 * Determines if a tweet is new or not
+		 * @return {Bool} Returns true if the tweet is not already in the list
+		 * @param {Dakuan.Models.Tweet} tweet The tweet to test
 		 */
 		isNew: function( tweet ) {
 
@@ -31,6 +39,8 @@ steal('jquery/model', 'jquery/model/list', './tweet.js', function() {
 
 /*
 		 * function takes a single tweet or an array of tweets and adds new tweets
+		 * @return {void}
+		 * @param {Array, Dakuan.Models.Tweet} tweets Tweet or array of tweets
 		 */
 		addIfNew: function( tweets ) {
 

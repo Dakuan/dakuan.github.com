@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Controllers.Map.MapSearch.prototype", "type": "prototype", "parents": ["Dakuan.Controllers.Map.MapSearch"], "comment": "", "src": "dakuan/map/map_search_controller.js", "line": 9, "children": ["Dakuan.Controllers.Map.MapSearch.prototype.init", "Dakuan.Controllers.Map.MapSearch.prototype.clear", "Dakuan.Controllers.Map.MapSearch.prototype.chain"]})

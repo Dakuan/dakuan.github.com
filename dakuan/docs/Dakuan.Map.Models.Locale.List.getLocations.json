@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Map.Models.Locale.List.getLocations", "params": {}, "ret": {"description": "<p>{Array of Microsoft.Maps.Locations}</p>", "type": undefined}, "type": "function", "parents": ["Dakuan.Map.Models.Locale.List"], "comment": "<p>Converts the list of locales into and array of Bing Maps Locations</p>", "src": "dakuan/models/map/locales.js", "line": 19, "children": []})

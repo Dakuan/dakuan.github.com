@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Controllers.Map.Map.init", "params": {}, "ret": {"description": "", "type": "void"}, "type": "function", "parents": ["Dakuan.Controllers.Map.Map"], "comment": "<p>gets the locales for the inital zoom level and attaches the search box controller</p>", "src": "dakuan/controllers/map/map_controller.js", "line": 12, "children": []})

@@ -1,0 +1,1 @@
+c({"name": "menu", "type": "page", "comment": "<p>blah blah blah the menu</p>", "title": "Menu", "parents": ["index"], "src": "dakuan/controllers/menu.md", "children": ["Dakuan.Controllers.Menu"]})

@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Map.Models.Locale.static", "type": "static", "parents": ["Dakuan.Map.Models.Locale"], "comment": "", "src": "dakuan/models/map/locale.js", "line": 9, "children": ["Dakuan.Map.Models.Locale.static.findForSpecies"]})

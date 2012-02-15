@@ -1,0 +1,1 @@
+c({"name": "Dakuan.Tweet.List", "type": "class", "comment": "<p>Lists tweets and lets you destroy them.</p>", "parents": ["index"], "inherits": "jQuery.Controller", "src": "dakuan/tweet/list/list.js", "line": 8, "children": ["Dakuan.Tweet.List.static", "Dakuan.Tweet.List.prototype"]})

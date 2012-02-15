@@ -9,6 +9,10 @@ steal('jquery/model', function() {
 	$.Model('Dakuan.Models.Repo',
 	/* @Static */
 	{
+		/*
+		 * Gets all the repos from github
+		 * @return {Array} an array of repos
+		 */
 		findAll: function() {
 
 			return $.ajax({
@@ -16,11 +20,7 @@ steal('jquery/model', function() {
 				type: 'get',
 				dataType: 'json repo.models'
 			});
-		},
-		findOne: "/repos/{id}.json",
-		create: "/repos.json",
-		update: "/repos/{id}.json",
-		destroy: "/repos/{id}.json"
+		}
 	},
 	/* @Prototype */
 	{});

@@ -1,10 +1,10 @@
 steal('jquery/model', './basemodel.js', function() {
 
 	/**
-	 * @class Riftmap.Models.Shell
-	 * @parent index
-	 * @inherits jQuery.Model
-	 * Wraps backend shell services.  
+	 * @class Dakuan.Map.Models.Genus
+	 * @parent mapmodels
+	 * @inherits Dakuan.Map.Models.Basemodel
+	 * Wraps backend genus services.  
 	 */
 	Dakuan.Map.Models.Basemodel('Dakuan.Map.Models.Genus',
 	/* @Static */
@@ -12,6 +12,11 @@ steal('jquery/model', './basemodel.js', function() {
 		model: function( data ) {
 			return new this(data);
 		},
+		
+		/*
+		 * Gets all the genera
+		 * @return {Array} the array of genera
+		 */
 		findAll: function() {
 			var url = 'http://riftdata.apphb.com/jsclient/getgeneraforlake/1?callback=?';
 
@@ -20,17 +25,7 @@ steal('jquery/model', './basemodel.js', function() {
 				type: 'get',
 				dataType: 'json genus.models'
 			});
-		},
-		findOne: function() {
-
-		},
-		create: function() {
-
-		},
-		update: function() {
-
-		},
-		destroy: function() {}
+		}
 	},
 	/* @Prototype */
 	{});

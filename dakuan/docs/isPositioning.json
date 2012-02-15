@@ -1,0 +1,1 @@
+c({"name": "isPositioning", "type": "attribute", "comment": "<p>Execute any valid callbacks for the set options\nAlso set isPositioning/isDrawing so we don't get loads of redundant repositioning\nand redraw calls.</p>", "src": "dakuan/lib/qtip/jquery.qtip.js", "line": 921, "children": []})
