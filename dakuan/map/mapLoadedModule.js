@@ -1,0 +1,2 @@
+
+Microsoft.Maps.moduleLoaded('mapLoaded');

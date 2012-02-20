@@ -33,7 +33,6 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 
 			deferred.done(this.callback('addFishPins'));
 		},
-
 		/*
 		 * Adds fish pins for the specified locales
 		 * @param {Dakuan.Map.Models.Locale.List} locales The list of locales
@@ -84,6 +83,24 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			}
 		},
 		
+
+		onMapLoaded: function(){
+			
+			//attach events        
+			Microsoft.Maps.Events.addHandler(this.map, 'viewchangeend', this.callback('onViewChangeEnd'));
+
+			//create layers
+			this.labelsLayer = new Microsoft.Maps.EntityCollection();
+
+			this.fishPinLayer = new Microsoft.Maps.EntityCollection();
+
+			this.map.entities.push(this.labelsLayer);
+
+			this.map.entities.push(this.fishPinLayer);
+			
+			$(document).trigger('mapLoaded');
+		},
+		
 		/*
 		 * Creates the map. map layers and attaches event handlers
 		 */
@@ -100,25 +117,9 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 				labelOverlay: Microsoft.Maps.LabelOverlay.hidden
 			});
 
-			//attach events        
-			Microsoft.Maps.Events.addHandler(this.map, 'viewchangeend', this.callback('onViewChangeEnd'));
-
-			var northEast = bounds.getNorthwest();
-
-			northEast.longitude += bounds.width;
-
-			var southWest = bounds.getSoutheast();
-
-			southWest.longitude -= bounds.width;
-
-			//create layers
-			this.labelsLayer = new Microsoft.Maps.EntityCollection();
-
-			this.fishPinLayer = new Microsoft.Maps.EntityCollection();
-
-			this.map.entities.push(this.labelsLayer);
-
-			this.map.entities.push(this.fishPinLayer);
+         	// Register and load a new module
+             Microsoft.Maps.registerModule("mapLoaded", "./dakuan/map/mapLoadedModule.js");
+             Microsoft.Maps.loadModule("mapLoaded", { callback: this.callback('onMapLoaded') });
 		},
 
 		/*

@@ -11,14 +11,6 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 	 * @Prototype
 	 */ {
 		
-		/*
-		 * Initialises the controller
-		 * <ol>
-		 * 	<li>Loads the view</li>
-		 * 	<li>Attaches a scrollbar</li>
-		 * 	<li>Loads the data for the genus drop down list</li>
-		 * </ol>
-		 */
 		init: function() {
 
 			this.element.html(this.view('//dakuan/map/views/mapsearch'));
@@ -33,20 +25,6 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 			}));
 		},
 
-		'#genusSelect change': function( el ) {
-
-			this.clear();
-
-			$('#speciesSelect').html($.View('//dakuan/map/views/options', Dakuan.Map.Models.Species.findForGenus(el.val()), function() {
-
-				$('#speciesSelect').prepend($.View('//dakuan/map/views/option', {
-					id: 0,
-					name: 'select a species'
-				}))
-
-				$('#speciesSelect').removeAttr('disabled');
-			}));
-		},
 		/*
 		 * Clears the locales list
 		 */
@@ -56,21 +34,7 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 
 			this.element.trigger('localesRemoved');
 		},
-
-		'#speciesSelect change': function( el ) {
-
-			this.clear();
-
-			this.element.trigger('speciesSelected', el.val());
-
-			var self = this;
-
-			Dakuan.Map.Models.Locale.findForSpecies(el.val()).done(function( data ) {
-
-				self.chain(data, 0, data.length);
-			})
-		},
-		
+	
 		/*
 		 * Daisy chains the animation of the locales sliding down
 		 */
@@ -107,7 +71,47 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 					onComplete();
 				}
 			}
-		}
+		},
+		
+		'#genusSelect change': function( el ) {
 
+			this.clear();
+
+			$('#speciesSelect').html($.View('//dakuan/map/views/options', Dakuan.Map.Models.Species.findForGenus(el.val()), function() {
+
+				$('#speciesSelect').prepend($.View('//dakuan/map/views/option', {
+					id: 0,
+					name: 'select a species'
+				}))
+
+				$('#speciesSelect').removeAttr('disabled');
+			}));
+		},
+		
+		'#speciesSelect change': function( el ) {
+
+			this.clear();
+
+			this.element.trigger('speciesSelected', el.val());
+
+			var self = this;
+
+			Dakuan.Map.Models.Locale.findForSpecies(el.val()).done(function( data ) {
+
+				self.chain(data, 0, data.length);
+			})
+		},
+						
+		'.locale hoverenter': function(el, ev){
+			el.addClass('hover', 300);
+		},		
+		
+		'.locale hoverleave': function(el, ev){
+			el.removeClass('hover', 300);
+		},
+		
+		'{document} mapLoaded': function(){
+			this.element.fadeIn(900);
+		}
 	})
 })
