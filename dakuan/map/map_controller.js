@@ -98,13 +98,27 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 
 			this.map.entities.push(this.fishPinLayer);
 			
-			$(document).trigger('mapLoaded');
+			var self = this;
+			$('.spinContainer').fadeOut(500, function(){
+				
+				$('#map').fadeIn(500, function(){
+					
+					self.map.setView({
+						bounds: self.bounds
+					});
+					
+					$(document).trigger('mapLoaded');
+				});
+
+			});
 		},
 		
 		/*
 		 * Creates the map. map layers and attaches event handlers
 		 */
 		createMap: function( bounds ) {
+			
+			this.bounds = bounds;
 
 			this.map = new Microsoft.Maps.Map(document.getElementById("map"), {
 				credentials: "AsZr5U9t2cAH1YZh8fMdisYJ3479SF2aw4MqdnC8-cK8bnHS_qpyNeAvXdXg8WID",

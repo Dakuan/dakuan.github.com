@@ -38,12 +38,17 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 		 */
 		onRecievedTweets: function( tweets ) {
 
-			this.observer = new Dakuan.TwitterObserver(this.twitterState, tweets);
-
-			this.list = $("#twitterListContainer").dakuan_twitter_list({
-				twitterState: this.twitterState,
-				displayedTweets: tweets
-			}).controller();
+			var self = this;
+			
+			$('.spinContainer').fadeOut(200, function(){
+				
+				self.observer = new Dakuan.TwitterObserver(self.twitterState, tweets);
+	
+				self.list = $("#twitterListContainer").dakuan_twitter_list({
+					twitterState: self.twitterState,
+					displayedTweets: tweets
+				}).controller();
+			});
 		},
 
 		'{document} twitterListInit': function() {
