@@ -1,0 +1,258 @@
+@import "animation";
+@import "colours";
+@import "fonts";
+@import "borders";
+@import "shadows";
+@import "core";
+@import "header";
+@import "layout";
+@import "scroll";
+@import "loading";
+@import "twitter";
+@import "footer";
+@import "menu";
+
+/*
+ *  Numbers
+ */
+
+@headerHeight:50px;
+@pageWidth:924px;
+@pageHeight:656px;
+@pageInset:50px;
+@generalMargin:40px;
+@contentWidth:@pageWidth -  @pageInset * 2;
+@tileWidth : (@contentWidth - (6 * @menuPadding) - (4 * @menuTileMargin) - 6) / 3;
+@detailWidth : @contentWidth - ((@menuMargin * 2) + (@menuBorderWidth * 2));
+@menuMargin: 20px;
+@menuBorderWidth: 1px;
+@menuPadding: 10px;
+@menuTileMargin: 20px;
+@menuWidth:@pageWidth -  @pageInset * 2;
+@menuSelectedHeight: 10px;
+
+
+.blueBackground{
+  background-image:url('../../assets/header-bg.jpg');
+}
+
+.verticalGradient(@topColor: #fff, @bottomColor: #000){
+/*
+  filter: ~"progid: DXImageTransform.Microsoft.gradient(startColorstr = '{@topColor}', endColorstr = '{@bottomColor}')";
+
+  -ms-filter: "progid: DXImageTransform.Microsoft.gradient(startColorstr = '@topColor', endColorstr = '@bottomColor')";
+*/
+  background-image: -moz-linear-gradient(top, @topColor, @bottomColor);
+  background-image: -ms-linear-gradient(top, @topColor, @bottomColor);
+  background-image: -o-linear-gradient(top, @topColor, @bottomColor);
+  background-image: -webkit-gradient(linear, center top, center bottom, from(@topColor), to(@bottomColor));
+  background-image: -webkit-linear-gradient(top, @topColor, @bottomColor);
+  background-image: linear-gradient(top, @topColor, @bottomColor);
+}
+
+.blueVerticalGradient(){
+  .verticalGradient(@darkBlue, @lightBlue);
+}
+
+
+.clear{
+  clear:both;
+}
+.right{
+  float:right;
+}
+.left{
+  float:left;
+}
+
+.solidBorder(@width: 1px){
+  border-style:solid;
+  border-width:@width;
+}
+
+.noBorder{
+  border-width:0px;
+  border-style:hidden;
+}
+
+.page{
+  .largeDropShadows;
+  .largeBorderRadius;
+  width: @pageWidth;
+  height:@pageHeight;
+  border-width:2px;
+  border-style:solid;
+  border-color:silver;  
+  margin-left: auto;
+  margin-right: auto;
+  background-color: @black;
+  font-size: 22px;
+}
+
+#content{
+  .smallBorderRadius;
+  .verticalGradient(@beige, lighten(@beige, 10%));
+  background-image:url('../../dakuan/assets/paperbg.jpg');
+  width:@contentWidth;
+  height:@pageHeight -  @pageInset * 2;
+  margin:@pageInset;
+  border-color: #222;
+  border-width: 1px;
+  border-style: solid;
+  color:@white;
+}
+
+.tile(@color){
+  border-color: @color;
+  background-color:desaturate(@color, 40%);
+  color:#aaa;
+  text-shadow: 0px 1px 1px #333;
+  &.hover{
+    border-color: darken(@color, 30%);
+    background-color: saturate(@color, 5%);
+    color:#ddd;
+  }
+  &.selected{
+    border-color: @color;
+    background-color:@color;
+    color:#ddd;  
+  }
+}
+
+#detailContainer{
+  clear:both;
+  display:none;
+  width:@detailWidth;
+  height:@pageHeight - (2* @pageInset);
+  margin: @menuMargin;
+  border-radius: 3px;
+  font-size:16px;
+  background:none;
+  text-shadow: 0px -1px 0px #EEE;
+}
+
+.section(@color){
+  .tile(@color);
+  &.detailContent{
+    color:@darkText;
+    text-shadow: 0px -1px 0px #eee;
+    a{
+      color:@color;
+    }
+    h2{
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      margin-right: 10px;
+      padding-bottom: 7px;
+      border-color:lighten(@color, 15%);
+    }
+    .thumb{
+      .verticalGradient(darken(@color, 10%), @color);
+    }
+    .track{
+      .verticalGradient(fade(@color, 30%), fade(@color, 20%));
+      border-color:lighten(@color, 5%);
+    }
+    .tweet, .repo, .jobCell{
+      color:@darkText;
+      background-color:fade(@color, 10%);
+      border-color:darken(@color, 15%);
+    }
+    .jobCell:hover{
+      h3{
+        color:@color;
+      }
+    }
+    #mapContainer{
+      //width:100%;
+      height:464px;
+      clear:both;
+      #mapSearch{
+        height: 452px;
+        .solidBorder;
+        .smallBorderRadius;
+        margin-left:10px;
+        width: 166px;
+        float: right;
+        padding: 5px;
+        .locale {
+          &.hover{
+            margin-top:5px;
+            margin-bottom:5px;
+            margin-left:5px;
+          }
+        }
+        select{
+          width: 100%;
+        }
+        li{
+          font-size: 13px;
+          line-height: 16px;
+        }
+      }
+    }  
+  }
+}
+
+ .mobile{
+   .section(@mobileColor);
+  }
+  .web{
+    .section(@webColor);
+  }
+  .dev{
+    .section(@devColor);
+  }
+  .about{
+    .section(@aboutColor);
+  }
+  .job{
+    .section(@jobColor);
+  }
+  .git{
+    .section(@gitColor);
+  }
+
+
+
+.qtip{
+    font-family:Helvetica,Arial,sans-serif;
+    font-weight:bold;
+}
+
+.cell{
+  list-style:none;
+  .smallBorderRadius;
+  margin-bottom:5px;
+  padding: 5px;
+  h3, h4{
+    border:none;
+    margin-top:0px;
+    margin-bottom:0px;
+  }
+  p{
+    margin:0px;
+    font-size:13px;
+  }
+  .solidBorder();
+}
+
+.repo{
+  .cell;
+}
+
+.jobCell{
+  .cell;
+  cursor:pointer;
+  .jobContent{
+      line-height:14px;
+      display:none;
+      margin-top: 2px;
+      margin-bottom: 2px;
+  }
+}
+
+ul.cellContainer{
+  margin: 0px;
+  padding:0px;
+}

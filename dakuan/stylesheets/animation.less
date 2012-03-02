@@ -1,0 +1,19 @@
+.spin  {
+  -webkit-transform: rotate(360deg);
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count:  infinite;
+  -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes spin {
+  from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
+.scale{
+  -moz-transform: scale(2) rotate(deg) translate(px, px) skew(deg, deg);
+  -webkit-transform: scale(2) rotate(deg) translate(px, px) skew(deg, deg);
+  -o-transform: scale(2) rotate(deg) translate(px, px) skew(deg, deg);
+  -ms-transform: scale(2) rotate(deg) translate(px, px) skew(deg, deg);
+  transform: scale(2) rotate(deg) translate(px, px) skew(deg, deg);
+}

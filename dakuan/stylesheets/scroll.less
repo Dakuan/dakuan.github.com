@@ -1,0 +1,46 @@
+
+.scrollContainer {
+  @scrollWidth: 7px;
+  height:100%;
+  .viewport { 
+    height: 100%; 
+    overflow: hidden;
+    position: relative;
+  }
+  .overview {  
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 100%;
+  }
+  .scrollbar { 
+    position: relative; 
+    float: right; 
+    width: @scrollWidth;
+    margin-left:10px;
+  }
+  .track { 
+    height: 100%; 
+    width:@scrollWidth;
+    position: relative; 
+    padding: 0 1px;
+    .smallBorderRadius;
+    padding-left:0px;
+    padding-right: 0px;
+    padding-bottom:2px;
+  }
+  .thumb { 
+    margin-top:1px;
+    margin-bottom:1px;
+    height: 20px; 
+    width: @scrollWidth;
+    cursor: pointer; 
+    overflow: hidden; 
+    position: absolute; 
+    top: 0;
+    .smallBorderRadius;
+    }
+  .disable{ 
+    display: none; 
+  }
+}

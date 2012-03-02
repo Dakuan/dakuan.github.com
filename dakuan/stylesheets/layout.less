@@ -1,0 +1,21 @@
+.col{
+    overflow-y:hidden;
+    height:@pageHeight - (2 * @pageInset) - @menuSelectedHeight - (4 * @menuMargin);
+}
+
+.halfCol{
+  width:@detailWidth / 2;
+  float:left;
+  .col;
+}
+.thirdCol{
+  width:@detailWidth / 3;
+  float:left;
+  .col;
+}
+.twoThirdsCol{
+  width:@detailWidth * (2/3);
+  float:left;
+  .col;
+}
+

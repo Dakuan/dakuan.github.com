@@ -1,0 +1,38 @@
+
+.header{
+  color:@darkBlue;
+  text-shadow: 0 1px 1px  darken(desaturate(@lightBlue, 30%),10%);
+ .verticalGradient(@lightBlue, @darkBlue);
+  box-shadow: rgb(0, 0, 0) 0px 0px 8px;
+  margin-bottom: @generalMargin;
+  padding: 8px;
+  
+  h1{
+    font-family: "Museo Slab", Rockwell, Georgia, serif;
+    font-weight: 400;
+    font-style: normal;
+    display: inline;
+    font-size: 34px;
+    margin-left: 10px;
+    line-height: 30px;
+    letter-spacing: -2px;
+  }
+  
+  .helpButton{
+    height:20px;
+    width:20px;
+    background-color:@darkBlue;
+    .smallBorderRadius;
+    .right;
+    color:@lightBlue;
+    text-align: center;
+    .fancyFont;
+    margin-top: 5px; 
+    .microDropShadows;
+    cursor:pointer;
+  }
+  .helpButton:hover{
+    background-color:@lightBlue;
+    color:@darkBlue;
+  }
+}

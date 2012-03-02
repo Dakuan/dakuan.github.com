@@ -1,0 +1,19 @@
+.largeDropShadows{
+  .dropShadow(0px, 0px, 8px, #000); 
+}
+
+.smallDropShadows{
+  .dropShadow(0px, 0px, 2px, #000); 
+}
+
+.microDropShadows{
+  .dropShadow(0px, 0px, 1px, #000); 
+}
+.dropShadow(@x:0px, @y:0px, @blur: 5px, @colour: #000){
+  -moz-box-shadow: @x @y @blur @colour;
+  -webkit-box-shadow: @x @y @blur @colour;
+  box-shadow: @x @y @blur @colour;
+}
+.shadowForDarkBlueText{
+    text-shadow: 0 1px 1px  darken(desaturate(@lightBlue, 30%),10%);
+}

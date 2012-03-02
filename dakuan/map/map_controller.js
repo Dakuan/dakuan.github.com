@@ -55,6 +55,7 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 					zIndex: 999,
 					typeName: "riftMapSpeciesPin id_" + element.id
 				});
+				
 				self.fishPinLayer.push(pin);
 			});
 
@@ -163,13 +164,24 @@ steal('jquery/controller', 'jquery/view/ejs', 'jquery/dom/form_params', 'jquery/
 					var pin = new Microsoft.Maps.Pushpin(location, {
 						text: element.Name,
 						icon: '',
-						width: 200,
+						width: 100,
 						height: 50,
 						zIndex: 500,
 						typeName: "riftMapPin id_" + element.Id,
 						textOffset: new Microsoft.Maps.Point(0, 35)
 					});
+					
+					Microsoft.Maps.Events.addHandler(pin, 'mouseover', function(ev){
+						
+						$('.' + ev.target._typeName.split(' ')[1]).addClass('hover');
+					});
 
+
+					Microsoft.Maps.Events.addHandler(pin, 'mouseout', function(ev){
+						
+						$('.' + ev.target._typeName.split(' ')[1]).removeClass('hover');
+					});
+					
 					self.labelsLayer.push(pin);
 				}
 			});
